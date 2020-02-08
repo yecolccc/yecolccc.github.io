@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>任浮生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
@@ -46,7 +46,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">yecol</a></h1>
 		</hgroup>
 		
 
@@ -200,7 +200,7 @@
 <ol start="6">
 <li>到上面我们的博客就已经初始化完成了，有一些常用的命名</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清理缓存</span></span><br><span class="line">hexo d <span class="comment"># 把文件上传到远端</span></span><br><span class="line">hexo g <span class="comment"># 生成文件</span></span><br><span class="line">hexo s <span class="comment"># 启动本地hexo服务器，默认端口4000</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清除缓存文件 db.json 和已生成的静态文件 public 。网站显示异常时可以执行这条命令试试。</span></span><br><span class="line"></span><br><span class="line">hexo d <span class="comment"># 自动生成网站静态文件，把文件上传到远端</span></span><br><span class="line"></span><br><span class="line">hexo g <span class="comment"># 生成文件</span></span><br><span class="line"></span><br><span class="line">hexo s <span class="comment"># 启动本地hexo服务器，默认端口4000</span></span><br><span class="line"></span><br><span class="line">hexo new <span class="string">"demo"</span> <span class="comment"># 新建一篇标题为demo的文章</span></span><br><span class="line"></span><br><span class="line">hexo new page aboutme <span class="comment"># 新建一个标题为 aboutme 的页面，默认链接地址为 主页地址/aboutme/</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>重新部署更新(下面这条命令会经常用到)</strong></p>
 <p><strong>(</strong>hexo clean –&gt;hexo generate –&gt;hexo deploy)</p>
@@ -249,6 +249,23 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
 
+<ol start="2">
+<li><p>网页上图片不显示。这个问题花费了我一些时间，不过也算简单吧，好像是我之前的那个图片驱动用不了，现在换了一个好多了，什么什么的 hexo p 命名觉得作用并不明显。</p>
+<ul>
+<li>首先我们需要安装一个图片路径转换的插件，这个插件名字是hexo-asset-image</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>打开_config.yml文件，修改下述内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这一点也是关键，在当前目录创建一个和md文件名称完全一样的目录，并将图片存放里面</p>
+</li>
+</ul>
+<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png" alt="目录结构"></p>
+</li>
+</ol>
 
       
 
