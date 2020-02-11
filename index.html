@@ -152,6 +152,213 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dbutils的使用（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">dbutils的使用（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-11T07:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、自定义封装数据"><a href="#一、自定义封装数据" class="headerlink" title="一、自定义封装数据"></a>一、自定义封装数据</h2><p>以封装表中多行数据为一个list为例</p>
+<p>需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放</p>
+<p>解决代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.自定义ResultSetHandler,封装员工数据</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resultSetHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"SELECT e.id,e.lastName,e.email,e.gender,e.d_id,d.departmentName FROM employee e LEFT JOIN department d ON e.d_id = d.id"</span>;</span><br><span class="line">    List&lt;Employee&gt; employeeList = qr.query(sql, <span class="keyword">new</span> ResultSetHandler&lt;List&lt;Employee&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">handle</span><span class="params">(ResultSet resultSet)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">            <span class="comment">//创建集合对象</span></span><br><span class="line">            ArrayList&lt;Employee&gt; employees = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">//遍历resultSet</span></span><br><span class="line">            <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">                <span class="comment">//创建员工对象</span></span><br><span class="line">                Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">                <span class="comment">//创建部门对象</span></span><br><span class="line">                Department department = <span class="keyword">new</span> Department();</span><br><span class="line">                <span class="comment">//封装员工中的普通数据</span></span><br><span class="line">                employee.setId(resultSet.getInt(<span class="number">1</span>));</span><br><span class="line">                employee.setLastName(resultSet.getString(<span class="number">2</span>));</span><br><span class="line">                employee.setEmail(resultSet.getString(<span class="string">"email"</span>));</span><br><span class="line">                employee.setGender(resultSet.getInt(<span class="string">"gender"</span>));</span><br><span class="line">                <span class="comment">//封装员工中的外部数据</span></span><br><span class="line">                department.setId(resultSet.getInt(<span class="string">"d_id"</span>));</span><br><span class="line">                department.setDepartmentName(resultSet.getString(<span class="number">6</span>));</span><br><span class="line">                <span class="comment">//员工中封装部门数据</span></span><br><span class="line">                employee.setDepartment(department);</span><br><span class="line">                <span class="comment">//员工集合中封装员工数据</span></span><br><span class="line">                employees.add(employee);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> employees;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employeeList) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打印结果：</p>
+<pre><code>Employee{id=1, lastName=&apos;张三&apos;, email=&apos;123@qq.com&apos;, gender=1, department=Department [id=1, departmentName=研发部]}
+Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gender=0, department=Department [id=1, departmentName=研发部]}</code></pre><h2 id="二、ThreadLocal管理连接"><a href="#二、ThreadLocal管理连接" class="headerlink" title="二、ThreadLocal管理连接"></a>二、ThreadLocal管理连接</h2><p>ThreadLocal的原理较为复杂，现在不作讨论，算是留给以后的一个任务~</p>
+<h3 id="2-1-将连接与线程绑定，保证连接的唯一"><a href="#2-1-将连接与线程绑定，保证连接的唯一" class="headerlink" title="2.1 将连接与线程绑定，保证连接的唯一"></a>2.1 将连接与线程绑定，保证连接的唯一</h3><p>实现代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; tl = <span class="keyword">new</span> ThreadLocal&lt;Connection&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		Connection conn = tl.get();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//第一次是空</span></span><br><span class="line">		<span class="keyword">if</span>(conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//从数据源取</span></span><br><span class="line">			conn = C3P0Uitls.getConnection();</span><br><span class="line">			tl.set(conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-实现事务的管理"><a href="#2-2-实现事务的管理" class="headerlink" title="2.2 实现事务的管理"></a>2.2 实现事务的管理</h3><p>实现代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开启事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beginTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 回滚事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rollbackTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().rollback();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提交事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">commitTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<pre><code>要想实现事务的管理，在我们使用QueryRunner执行方法时必须使用这个类获取的连接，
+不能在构造方法中传入数据源，从而保证连接的唯一性。</code></pre><h2 id="三、QueryRunner的批处理"><a href="#三、QueryRunner的批处理" class="headerlink" title="三、QueryRunner的批处理"></a>三、QueryRunner的批处理</h2><h3 id="3-1-举例"><a href="#3-1-举例" class="headerlink" title="3.1 举例"></a>3.1 举例</h3><p>如果我们想要一次性在部门表中添加多条数据，或者说是添加多个部门，我们先将部门对象放在一个集合里面，下面说一下我们传统的方法。</p>
+<h3 id="3-2-传统方法解决批量添加"><a href="#3-2-传统方法解决批量添加" class="headerlink" title="3.2 传统方法解决批量添加"></a>3.2 传统方法解决批量添加</h3><p>遍历集合，一个一个添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.传统的方法解决批量添加问题</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertMoreOld</span><span class="params">(List&lt;Department&gt; departments)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"insert into department(departmentName) values (?)"</span>;</span><br><span class="line">    <span class="comment">//遍历这个集合</span></span><br><span class="line">    <span class="keyword">for</span> (Department department : departments) &#123;</span><br><span class="line">        <span class="comment">//定义一个object数值存放参数</span></span><br><span class="line">        List&lt;Object&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        params.add(department.getDepartmentName());</span><br><span class="line">        qr.update(sql,params.toArray());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li>如果在插入某一条数据出现了问题，那么已经插入了的还是会插入，事务不会得到控制</li>
+<li>每一次执行一条sql语句会给我们的系统带来过多的开销</li>
+</ol>
+<h3 id="3-3-使用批处理-batch"><a href="#3-3-使用批处理-batch" class="headerlink" title="3.3 使用批处理(batch)"></a>3.3 使用批处理(batch)</h3><p>对上面方法的改进：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.批处理的方法解决批量添加问题</span><br><span class="line">public void insertMoreNew(List&lt;Department&gt; departments) throws SQLException &#123;</span><br><span class="line">    String sql &#x3D; &quot;insert into department(departmentName) values (?)&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建一个二维数组</span><br><span class="line">    Object[][] params &#x3D; new Object[departments.size()][];</span><br><span class="line">    &#x2F;&#x2F;给二位数组中的元素赋值(通过赋值一维数组 也就是在堆空间中再分别添加一个一维数组的引用)</span><br><span class="line">    for (int i &#x3D; 0; i &lt; params.length; i++) &#123;</span><br><span class="line">        Department department &#x3D; departments.get(i);</span><br><span class="line">        params[i] &#x3D; new Object[]&#123;department.getDepartmentName()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;批处理执行sql语句</span><br><span class="line">    qr.batch(ManagerThreadLocal.getConnection(),sql,params);</span><br></pre></td></tr></table></figure>
+<p>备注：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">此处的ManagerThreadLocal的实现就是上面事务管理代码</span><br><span class="line">使用批处理既能优化性能又能实现事务控制</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dbutils的使用（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">dbutils的使用（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-11T07:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。</p>
+<p>DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。</p>
+<p>DBUtils三个核心功能介绍：</p>
+<ol>
+<li>QueryRunner中提供对sql语句操作的API</li>
+<li>ResultSetHandler接口，用于定义select操作后，自定义封装结果集</li>
+<li>DBUtils类，它就是一个工具类，定义了关闭资源与事务处理的方法</li>
+</ol>
+<h2 id="二、QueryRunner核心类"><a href="#二、QueryRunner核心类" class="headerlink" title="二、QueryRunner核心类"></a>二、QueryRunner核心类</h2><ol>
+<li>QueryRunner(DataSourcr ds),提供数据源（连接池），DbUtils底层==自动维护连接connection==，我们无需手动关闭连接创建连接</li>
+<li>update（String sql，Obj…params），执行更新数据（对数据的增删改）</li>
+<li>query（String sql，ResultSetHandler<T>rsh,Object…panrams)，执行查询</T></li>
+</ol>
+<h2 id="三、ResultSetHandler结果集处理类"><a href="#三、ResultSetHandler结果集处理类" class="headerlink" title="三、ResultSetHandler结果集处理类"></a>三、ResultSetHandler结果集处理类</h2><ul>
+<li>ArrayHandler：适合取1条记录，把结果集中的第一行数据转成对象数组。</li>
+<li>ArrayListHandler：适合取多条记录，把结果集中的每一行数据都转成一个对象数组，再存放到List中。</li>
+<li>BeanHandler：将结果集中的第一行数据封装到一个对应的JavaBean实例中（把每条记录封装成对象，适合取一条记录）</li>
+<li>==BeanListHandler==：将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。</li>
+<li>==MapHandler==：将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。</li>
+<li>MapListHandler：将结果集中的每一行数据都封装到一个Map里，然后再存放到List</li>
+<li>ColumnListHandler：将结果集中某一列的数据存放到List中。</li>
+<li>*KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里(List<Map>)，再把这些map再存到一个map里，其key为指定的列。</Map></li>
+<li>ScalarHandler:将结果集第一行的某一列放到某个对象中</li>
+</ul>
+<h2 id="四、代码举例"><a href="#四、代码举例" class="headerlink" title="四、代码举例"></a>四、代码举例</h2><p>以常见的部门员工表为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.ArrayHandler：将查询的结果的第一行放到一个数组中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Object[] query = qr.query(sql, <span class="keyword">new</span> ArrayHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object o : query) &#123;</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.ArrayListHandler：将查询的结果的每一行放到一个数组中，然后再将数组放到集合中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Object[]&gt; objects = qr.query(sql, <span class="keyword">new</span> ArrayListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object[] object : objects) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Object o : object) &#123;</span><br><span class="line">            System.out.println(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3.BeanHandler：将查询的结果的第一行封装到一份javabean对象中</span></span><br><span class="line"><span class="comment">//由于外键department处存放的一个对象，所以未能进行封装</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beanHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Employee employee = qr.query(sql, <span class="keyword">new</span> BeanHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    System.out.println(employee);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.BeanListHandler：将查询的结果的每一行封装到一个javabean对象中，然后再将这些对象存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BeanListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Employee&gt; employees = qr.query(sql, <span class="keyword">new</span> BeanListHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employees) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//5.MapHandler：将查询的结果的第一行存入到一个map中，键为列名，值为各列值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Map&lt;String, Object&gt; map = qr.query(sql, <span class="keyword">new</span> MapHandler());</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询结果为：</span></span><br><span class="line"><span class="comment">//    &#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//6.MapListHandler：将查询的结果的每一行存入到一个map中，键为列名，值为各列值；然后再将map存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; list = qr.query(sql, <span class="keyword">new</span> MapListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : list) &#123;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//&#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br><span class="line"><span class="comment">//&#123;lastName=李四, gender=0, d_id=1, id=2, email=321@163.com&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//7.ScalarHandler：将查询的结果的第一行的某一列放到一个对象中；精确定位到某个值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scalarHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    <span class="comment">//已知第二列为lastName，将Object类型强转为String类型</span></span><br><span class="line">    String lastName = (String) qr.query(sql,<span class="keyword">new</span> ScalarHandler(<span class="number">2</span>));</span><br><span class="line">    System.out.println(lastName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//张三</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hexo笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -469,82 +676,6 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/08/hello-world/" class="archive-article-date">
-  	<time datetime="2020-02-08T02:11:06.570Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p><img src="/2020/02/08/hello-world/mot.jpg" alt="hi"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/08/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -638,11 +769,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">平时笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习记录</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">haha</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">平时笔记</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringBoot | Hexo</title>
+  <title>dbutils的使用（一） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、 Spring的常用配置1.1 Bean的Scope属性Scope属性描述时Spring容器如何新建Bean实例的时候，可以通过@Scope注解来实现。有一下几种指定：  Singleton：一个Spring容器只有一个Sprin实例，是Spring的默认属性，全容器共享一个属性 protorype：每次调用创建一个Bean实例 Request：Web项目中，给每一个http request新">
+  <meta name="description" content="一、概述DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。 DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。 DBUtils三个核心功能介绍：  QueryRunner中提供对sql语句操作的API ResultSetHandler接口，用于定义select操作后，自定义封装结果集 DBUtils类，它就是一个工具类，定义了关闭资源与事务处理的方法  二、Q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot">
-<meta property="og:url" content="http://yoursite.com/2020/02/08/SpringBoot/index.html">
+<meta property="og:title" content="dbutils的使用（一）">
+<meta property="og:url" content="http://yoursite.com/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、 Spring的常用配置1.1 Bean的Scope属性Scope属性描述时Spring容器如何新建Bean实例的时候，可以通过@Scope注解来实现。有一下几种指定：  Singleton：一个Spring容器只有一个Sprin实例，是Spring的默认属性，全容器共享一个属性 protorype：每次调用创建一个Bean实例 Request：Web项目中，给每一个http request新">
+<meta property="og:description" content="一、概述DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。 DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。 DBUtils三个核心功能介绍：  QueryRunner中提供对sql语句操作的API ResultSetHandler接口，用于定义select操作后，自定义封装结果集 DBUtils类，它就是一个工具类，定义了关闭资源与事务处理的方法  二、Q">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-08T03:48:11.654Z">
-<meta property="article:modified_time" content="2020-02-06T12:36:00.342Z">
+<meta property="article:published_time" content="2020-02-11T07:25:04.000Z">
+<meta property="article:modified_time" content="2020-02-11T07:26:31.941Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习记录">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -154,41 +155,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringBoot" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-dbutils的使用（一）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot
+      dbutils的使用（一）
     </h1>
   
 
         
-        <a href="/2020/02/08/SpringBoot/" class="archive-article-date">
-  	<time datetime="2020-02-08T03:48:11.654Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
+        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-11T07:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、-Spring的常用配置"><a href="#一、-Spring的常用配置" class="headerlink" title="一、 Spring的常用配置"></a>一、 Spring的常用配置</h1><h2 id="1-1-Bean的Scope属性"><a href="#1-1-Bean的Scope属性" class="headerlink" title="1.1 Bean的Scope属性"></a>1.1 Bean的Scope属性</h2><p>Scope属性描述时Spring容器如何新建Bean实例的时候，可以通过@Scope注解来实现。有一下几种指定：</p>
+        <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。</p>
+<p>DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。</p>
+<p>DBUtils三个核心功能介绍：</p>
 <ol>
-<li>Singleton：一个Spring容器只有一个Sprin实例，是Spring的默认属性，全容器共享一个属性</li>
-<li>protorype：每次调用创建一个Bean实例</li>
-<li>Request：Web项目中，给每一个http request新建一个Bean实例</li>
-<li>Session：Web项目总，给每一个http session新建一个Bean实例</li>
-<li>GlobalSession：只有在<strong>portal应用</strong>中起作用，给每一个global http session新建一个Bean实例</li>
+<li>QueryRunner中提供对sql语句操作的API</li>
+<li>ResultSetHandler接口，用于定义select操作后，自定义封装结果集</li>
+<li>DBUtils类，它就是一个工具类，定义了关闭资源与事务处理的方法</li>
 </ol>
-<h2 id="1-2-Bean的初始化与销毁"><a href="#1-2-Bean的初始化与销毁" class="headerlink" title="1.2 Bean的初始化与销毁"></a>1.2 Bean的初始化与销毁</h2><p>我们在开发的时候，需要Bean在使用之前或者之后做成必要的操作。在java配置和注解配置提供了如下两种方式：</p>
-<ol>
-<li>java配置方式：使用@Bean的initMethod和destroyMethod(相当于xml配置的init-method和destory-method)</li>
-<li>注解方式：使用JSR-250的@PostConstruct和@PreDestoryC</li>
+<h2 id="二、QueryRunner核心类"><a href="#二、QueryRunner核心类" class="headerlink" title="二、QueryRunner核心类"></a>二、QueryRunner核心类</h2><ol>
+<li>QueryRunner(DataSourcr ds),提供数据源（连接池），DbUtils底层==自动维护连接connection==，我们无需手动关闭连接创建连接</li>
+<li>update（String sql，Obj…params），执行更新数据（对数据的增删改）</li>
+<li>query（String sql，ResultSetHandler<T>rsh,Object…panrams)，执行查询</T></li>
 </ol>
-<p>执行顺序：Bean-init方法，构造函数，JSR250-init,JSP250-destroy,Bean-destory</p>
+<h2 id="三、ResultSetHandler结果集处理类"><a href="#三、ResultSetHandler结果集处理类" class="headerlink" title="三、ResultSetHandler结果集处理类"></a>三、ResultSetHandler结果集处理类</h2><ul>
+<li>ArrayHandler：适合取1条记录，把结果集中的第一行数据转成对象数组。</li>
+<li>ArrayListHandler：适合取多条记录，把结果集中的每一行数据都转成一个对象数组，再存放到List中。</li>
+<li>BeanHandler：将结果集中的第一行数据封装到一个对应的JavaBean实例中（把每条记录封装成对象，适合取一条记录）</li>
+<li>==BeanListHandler==：将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。</li>
+<li>==MapHandler==：将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。</li>
+<li>MapListHandler：将结果集中的每一行数据都封装到一个Map里，然后再存放到List</li>
+<li>ColumnListHandler：将结果集中某一列的数据存放到List中。</li>
+<li>*KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里(List<Map>)，再把这些map再存到一个map里，其key为指定的列。</Map></li>
+<li>ScalarHandler:将结果集第一行的某一列放到某个对象中</li>
+</ul>
+<h2 id="四、代码举例"><a href="#四、代码举例" class="headerlink" title="四、代码举例"></a>四、代码举例</h2><p>以常见的部门员工表为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.ArrayHandler：将查询的结果的第一行放到一个数组中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Object[] query = qr.query(sql, <span class="keyword">new</span> ArrayHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object o : query) &#123;</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.ArrayListHandler：将查询的结果的每一行放到一个数组中，然后再将数组放到集合中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Object[]&gt; objects = qr.query(sql, <span class="keyword">new</span> ArrayListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object[] object : objects) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Object o : object) &#123;</span><br><span class="line">            System.out.println(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3.BeanHandler：将查询的结果的第一行封装到一份javabean对象中</span></span><br><span class="line"><span class="comment">//由于外键department处存放的一个对象，所以未能进行封装</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beanHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Employee employee = qr.query(sql, <span class="keyword">new</span> BeanHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    System.out.println(employee);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.BeanListHandler：将查询的结果的每一行封装到一个javabean对象中，然后再将这些对象存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BeanListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Employee&gt; employees = qr.query(sql, <span class="keyword">new</span> BeanListHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employees) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//5.MapHandler：将查询的结果的第一行存入到一个map中，键为列名，值为各列值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Map&lt;String, Object&gt; map = qr.query(sql, <span class="keyword">new</span> MapHandler());</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询结果为：</span></span><br><span class="line"><span class="comment">//    &#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//6.MapListHandler：将查询的结果的每一行存入到一个map中，键为列名，值为各列值；然后再将map存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; list = qr.query(sql, <span class="keyword">new</span> MapListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : list) &#123;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//&#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br><span class="line"><span class="comment">//&#123;lastName=李四, gender=0, d_id=1, id=2, email=321@163.com&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//7.ScalarHandler：将查询的结果的第一行的某一列放到一个对象中；精确定位到某个值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scalarHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    <span class="comment">//已知第二列为lastName，将Object类型强转为String类型</span></span><br><span class="line">    String lastName = (String) qr.query(sql,<span class="keyword">new</span> ScalarHandler(<span class="number">2</span>));</span><br><span class="line">    System.out.println(lastName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//张三</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -217,6 +240,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -267,7 +301,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/SpringBoot/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,18 +315,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hexo笔记
+          dbutils的使用（二）
         
       </div>
     </a>
   
   
-    <a href="/2020/02/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客文章</div>
+    <a href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
