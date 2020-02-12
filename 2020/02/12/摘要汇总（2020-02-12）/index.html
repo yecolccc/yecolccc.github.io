@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>dbutils的使用（二） | 风落尘归去</title>
+  <title>摘要汇总（2020-02-12） | 风落尘归去</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、自定义封装数据以封装表中多行数据为一个list为例 需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放 解决代码： 123456789101112131415161718192021222324252627282930313233343536&#x2F;&#x2F;1.自定义ResultSetHandler,封装员工数据@Testpublic void resultSetHan">
+  <meta name="description" content="我在继承使用反射执行方法的BaseServlet时，子类中的方法访问修饰符只能用public  SpringBoot开启驼峰命名法：mybatis.configuration.map-underscore-to-camel-case&#x3D;true  @Resources与@AutoWired的区别：  使用mybatis注解开发时，在mapper上只用了@mapper注解，没有@Component注">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dbutils的使用（二）">
-<meta property="og:url" content="http://yoursite.com/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:title" content="摘要汇总（2020-02-12）">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/index.html">
 <meta property="og:site_name" content="风落尘归去">
-<meta property="og:description" content="一、自定义封装数据以封装表中多行数据为一个list为例 需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放 解决代码： 123456789101112131415161718192021222324252627282930313233343536&#x2F;&#x2F;1.自定义ResultSetHandler,封装员工数据@Testpublic void resultSetHan">
+<meta property="og:description" content="我在继承使用反射执行方法的BaseServlet时，子类中的方法访问修饰符只能用public  SpringBoot开启驼峰命名法：mybatis.configuration.map-underscore-to-camel-case&#x3D;true  @Resources与@AutoWired的区别：  使用mybatis注解开发时，在mapper上只用了@mapper注解，没有@Component注">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-11T07:26:01.000Z">
-<meta property="article:modified_time" content="2020-02-11T07:27:09.968Z">
+<meta property="article:published_time" content="2020-02-12T09:17:36.079Z">
+<meta property="article:modified_time" content="2020-02-12T06:53:38.792Z">
 <meta property="article:author" content="yecol">
-<meta property="article:tag" content="学习记录">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="风落尘归去" type="application/atom+xml">
@@ -155,52 +155,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-dbutils的使用（二）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-摘要汇总（2020-02-12）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      dbutils的使用（二）
+      摘要汇总（2020-02-12）
     </h1>
   
 
         
-        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+        <a href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-12T09:17:36.079Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、自定义封装数据"><a href="#一、自定义封装数据" class="headerlink" title="一、自定义封装数据"></a>一、自定义封装数据</h2><p>以封装表中多行数据为一个list为例</p>
-<p>需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放</p>
-<p>解决代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.自定义ResultSetHandler,封装员工数据</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resultSetHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"SELECT e.id,e.lastName,e.email,e.gender,e.d_id,d.departmentName FROM employee e LEFT JOIN department d ON e.d_id = d.id"</span>;</span><br><span class="line">    List&lt;Employee&gt; employeeList = qr.query(sql, <span class="keyword">new</span> ResultSetHandler&lt;List&lt;Employee&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">handle</span><span class="params">(ResultSet resultSet)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">            <span class="comment">//创建集合对象</span></span><br><span class="line">            ArrayList&lt;Employee&gt; employees = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">//遍历resultSet</span></span><br><span class="line">            <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">                <span class="comment">//创建员工对象</span></span><br><span class="line">                Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">                <span class="comment">//创建部门对象</span></span><br><span class="line">                Department department = <span class="keyword">new</span> Department();</span><br><span class="line">                <span class="comment">//封装员工中的普通数据</span></span><br><span class="line">                employee.setId(resultSet.getInt(<span class="number">1</span>));</span><br><span class="line">                employee.setLastName(resultSet.getString(<span class="number">2</span>));</span><br><span class="line">                employee.setEmail(resultSet.getString(<span class="string">"email"</span>));</span><br><span class="line">                employee.setGender(resultSet.getInt(<span class="string">"gender"</span>));</span><br><span class="line">                <span class="comment">//封装员工中的外部数据</span></span><br><span class="line">                department.setId(resultSet.getInt(<span class="string">"d_id"</span>));</span><br><span class="line">                department.setDepartmentName(resultSet.getString(<span class="number">6</span>));</span><br><span class="line">                <span class="comment">//员工中封装部门数据</span></span><br><span class="line">                employee.setDepartment(department);</span><br><span class="line">                <span class="comment">//员工集合中封装员工数据</span></span><br><span class="line">                employees.add(employee);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> employees;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employeeList) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打印结果：</p>
-<pre><code>Employee{id=1, lastName=&apos;张三&apos;, email=&apos;123@qq.com&apos;, gender=1, department=Department [id=1, departmentName=研发部]}
-Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gender=0, department=Department [id=1, departmentName=研发部]}</code></pre><h2 id="二、ThreadLocal管理连接"><a href="#二、ThreadLocal管理连接" class="headerlink" title="二、ThreadLocal管理连接"></a>二、ThreadLocal管理连接</h2><p>ThreadLocal的原理较为复杂，现在不作讨论，算是留给以后的一个任务~</p>
-<h3 id="2-1-将连接与线程绑定，保证连接的唯一"><a href="#2-1-将连接与线程绑定，保证连接的唯一" class="headerlink" title="2.1 将连接与线程绑定，保证连接的唯一"></a>2.1 将连接与线程绑定，保证连接的唯一</h3><p>实现代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; tl = <span class="keyword">new</span> ThreadLocal&lt;Connection&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		Connection conn = tl.get();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//第一次是空</span></span><br><span class="line">		<span class="keyword">if</span>(conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//从数据源取</span></span><br><span class="line">			conn = C3P0Uitls.getConnection();</span><br><span class="line">			tl.set(conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-实现事务的管理"><a href="#2-2-实现事务的管理" class="headerlink" title="2.2 实现事务的管理"></a>2.2 实现事务的管理</h3><p>实现代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开启事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beginTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 回滚事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rollbackTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().rollback();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提交事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">commitTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<pre><code>要想实现事务的管理，在我们使用QueryRunner执行方法时必须使用这个类获取的连接，
-不能在构造方法中传入数据源，从而保证连接的唯一性。</code></pre><h2 id="三、QueryRunner的批处理"><a href="#三、QueryRunner的批处理" class="headerlink" title="三、QueryRunner的批处理"></a>三、QueryRunner的批处理</h2><h3 id="3-1-举例"><a href="#3-1-举例" class="headerlink" title="3.1 举例"></a>3.1 举例</h3><p>如果我们想要一次性在部门表中添加多条数据，或者说是添加多个部门，我们先将部门对象放在一个集合里面，下面说一下我们传统的方法。</p>
-<h3 id="3-2-传统方法解决批量添加"><a href="#3-2-传统方法解决批量添加" class="headerlink" title="3.2 传统方法解决批量添加"></a>3.2 传统方法解决批量添加</h3><p>遍历集合，一个一个添加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.传统的方法解决批量添加问题</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertMoreOld</span><span class="params">(List&lt;Department&gt; departments)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"insert into department(departmentName) values (?)"</span>;</span><br><span class="line">    <span class="comment">//遍历这个集合</span></span><br><span class="line">    <span class="keyword">for</span> (Department department : departments) &#123;</span><br><span class="line">        <span class="comment">//定义一个object数值存放参数</span></span><br><span class="line">        List&lt;Object&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        params.add(department.getDepartmentName());</span><br><span class="line">        qr.update(sql,params.toArray());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>问题：</p>
-<ol>
-<li>如果在插入某一条数据出现了问题，那么已经插入了的还是会插入，事务不会得到控制</li>
-<li>每一次执行一条sql语句会给我们的系统带来过多的开销</li>
+        <ol>
+<li><p>我在继承使用反射执行方法的BaseServlet时，子类中的方法访问修饰符只能用public</p>
+</li>
+<li><p>SpringBoot开启驼峰命名法：mybatis.configuration.map-underscore-to-camel-case=true</p>
+</li>
+<li><p>@Resources与@AutoWired的区别：</p>
+<ul>
+<li>使用mybatis注解开发时，在mapper上只用了@mapper注解，没有@Component注解，因此在控制层使用@Autowired自动装配时会报错，可是又可以使用（老师说是idea的问题）</li>
+<li>此时使用@Resource注解就不报错了，具体原因是@Autowired是按照类型注入，而@Reources是按照名称注入的。暂时猜想可能是因为默认这个mapper只是一个接口，不符合组件的类型吧</li>
+</ul>
+</li>
+<li><p>Junit在pom文件中scope用的test，导致只能在专用的test包内才能用单元测试。想要在源码中(java)弄测试，需要让scope中属性用compile</p>
+</li>
+<li><p>idea查看实现类的快捷键：Ctrl + H</p>
+</li>
+<li><p>一直想找的eclipse的快捷键：shift+alt+s</p>
+</li>
+<li><p>button的type属性：</p>
+<ul>
+<li>submit:提交表单（除IE外的默认）</li>
+<li>button:可以点击的按钮</li>
+<li>reset:清除表单的数据</li>
+</ul>
+</li>
+<li><p>request.getSession(true|false):</p>
+<ul>
+<li>true 如果有则返回 没有则创建（默认）</li>
+<li>false 如果有则返回 没有则返回null</li>
+</ul>
+</li>
+<li><p>url:通用资源标识符 &nbsp; &nbsp;url：统一资源定位符</p>
+</li>
+<li><p>get和post请求的区别：数长可缓</p>
+<h1 id="get-post"><a href="#get-post" class="headerlink" title="| get | post"></a>| get | post</h1><p>— | — | —<br>数据类型 | 文本 | 文本、二进制<br>长度 | 255 | 无限制<br>可见性 | 可见 | 不可见<br>被浏览器缓存 | 可以 | 不可以</p>
+</li>
+<li><p>pageContext.request.contextPath表示获取根路径 在jsp中广泛使用</p>
+</li>
+<li><p>允许跨域 ：response.setHeader(“Access-Control-Allow-Origin”, “*”);</p>
+</li>
+<li><p>解决服务器响应数据乱码（通过设置mime类型）</p>
+<ul>
+<li>返回的是json类型 response.setContentType(“application/json;charset=utf-8”);</li>
+<li>返回的是html mhsr.setHeader(“content-type”, “text/html;charset=utf-8”);</li>
+</ul>
+</li>
+<li><p>可以用上下文对象获取WEB-INF/下的文件，如</p>
+<ul>
+<li>this.getServletContext().getRealPath(“WEB-INF/conf/dbconfig.properties);</li>
+</ul>
+</li>
+<li><p>response.getWriter下的两个方法：</p>
+<ul>
+<li><strong>print</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().print(),不仅可以打印输出文本格式的（包括html标签），还可以将一个对象以默认的编码方式转换为二进制字节输出</li>
+<li><strong>writer</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().writer(),只能打印输出文本格式的（包括html标签），不可以打印对象</li>
+</ul>
+</li>
+<li><p>java.sql.Date是java.util.Date的子类</p>
+</li>
+<li><p>bootstrap中偏移元素：class指定 col-md-offset-4  向右移四格</p>
+</li>
+<li><p>进行转发时可以是用相对路径，重定向时必须使用绝对路径，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(request.getContextPath()+<span class="string">"/login.html"</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>使用原生jdbc用预处理PreparedStatement设置参数，添加日期对象时：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps.setDate(<span class="number">3</span>,java.sql.Date.valueOf(<span class="string">"1999-11-11"</span>));</span><br></pre></td></tr></table></figure></li>
+<li><p>实现comparable接口的comparaTo方法</p>
+<ul>
+<li>实现comparable接口的comparaTo方法当前的减去传进来的，大于0返回1 从升序</li>
+<li>利用comparator接口重写compare方法前面的减去后面的升序</li>
+</ul>
+</li>
+<li><p>1个中文:</p>
+<ul>
+<li>GBK:2个字节</li>
+<li>UTF-8:3个字节</li>
+</ul>
+</li>
+<li><p>使用管理员身份打开cmd后</p>
+<ul>
+<li>net start mysql : 启动mysql的服务</li>
+<li>net stop mysql : 关闭mysql的服务   </li>
+</ul>
+</li>
 </ol>
-<h3 id="3-3-使用批处理-batch"><a href="#3-3-使用批处理-batch" class="headerlink" title="3.3 使用批处理(batch)"></a>3.3 使用批处理(batch)</h3><p>对上面方法的改进：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.批处理的方法解决批量添加问题</span><br><span class="line">public void insertMoreNew(List&lt;Department&gt; departments) throws SQLException &#123;</span><br><span class="line">    String sql &#x3D; &quot;insert into department(departmentName) values (?)&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建一个二维数组</span><br><span class="line">    Object[][] params &#x3D; new Object[departments.size()][];</span><br><span class="line">    &#x2F;&#x2F;给二位数组中的元素赋值(通过赋值一维数组 也就是在堆空间中再分别添加一个一维数组的引用)</span><br><span class="line">    for (int i &#x3D; 0; i &lt; params.length; i++) &#123;</span><br><span class="line">        Department department &#x3D; departments.get(i);</span><br><span class="line">        params[i] &#x3D; new Object[]&#123;department.getDepartmentName()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;批处理执行sql语句</span><br><span class="line">    qr.batch(ManagerThreadLocal.getConnection(),sql,params);</span><br></pre></td></tr></table></figure>
-<p>备注：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">此处的ManagerThreadLocal的实现就是上面事务管理代码</span><br><span class="line">使用批处理既能优化性能又能实现事务控制</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -229,17 +287,6 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -290,7 +337,7 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +351,9 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
   
 <nav id="article-nav">
   
-    <a href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          摘要汇总（2020-02-12）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">dbutils的使用（一）</div>
+    <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dbutils的使用（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   

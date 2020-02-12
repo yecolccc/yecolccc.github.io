@@ -155,6 +155,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-摘要汇总（2020-02-12）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">摘要汇总（2020-02-12）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-12T09:17:36.079Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>我在继承使用反射执行方法的BaseServlet时，子类中的方法访问修饰符只能用public</p>
+</li>
+<li><p>SpringBoot开启驼峰命名法：mybatis.configuration.map-underscore-to-camel-case=true</p>
+</li>
+<li><p>@Resources与@AutoWired的区别：</p>
+<ul>
+<li>使用mybatis注解开发时，在mapper上只用了@mapper注解，没有@Component注解，因此在控制层使用@Autowired自动装配时会报错，可是又可以使用（老师说是idea的问题）</li>
+<li>此时使用@Resource注解就不报错了，具体原因是@Autowired是按照类型注入，而@Reources是按照名称注入的。暂时猜想可能是因为默认这个mapper只是一个接口，不符合组件的类型吧</li>
+</ul>
+</li>
+<li><p>Junit在pom文件中scope用的test，导致只能在专用的test包内才能用单元测试。想要在源码中(java)弄测试，需要让scope中属性用compile</p>
+</li>
+<li><p>idea查看实现类的快捷键：Ctrl + H</p>
+</li>
+<li><p>一直想找的eclipse的快捷键：shift+alt+s</p>
+</li>
+<li><p>button的type属性：</p>
+<ul>
+<li>submit:提交表单（除IE外的默认）</li>
+<li>button:可以点击的按钮</li>
+<li>reset:清除表单的数据</li>
+</ul>
+</li>
+<li><p>request.getSession(true|false):</p>
+<ul>
+<li>true 如果有则返回 没有则创建（默认）</li>
+<li>false 如果有则返回 没有则返回null</li>
+</ul>
+</li>
+<li><p>url:通用资源标识符 &nbsp; &nbsp;url：统一资源定位符</p>
+</li>
+<li><p>get和post请求的区别：数长可缓</p>
+<h1 id="get-post"><a href="#get-post" class="headerlink" title="| get | post"></a>| get | post</h1><p>— | — | —<br>数据类型 | 文本 | 文本、二进制<br>长度 | 255 | 无限制<br>可见性 | 可见 | 不可见<br>被浏览器缓存 | 可以 | 不可以</p>
+</li>
+<li><p>pageContext.request.contextPath表示获取根路径 在jsp中广泛使用</p>
+</li>
+<li><p>允许跨域 ：response.setHeader(“Access-Control-Allow-Origin”, “*”);</p>
+</li>
+<li><p>解决服务器响应数据乱码（通过设置mime类型）</p>
+<ul>
+<li>返回的是json类型 response.setContentType(“application/json;charset=utf-8”);</li>
+<li>返回的是html mhsr.setHeader(“content-type”, “text/html;charset=utf-8”);</li>
+</ul>
+</li>
+<li><p>可以用上下文对象获取WEB-INF/下的文件，如</p>
+<ul>
+<li>this.getServletContext().getRealPath(“WEB-INF/conf/dbconfig.properties);</li>
+</ul>
+</li>
+<li><p>response.getWriter下的两个方法：</p>
+<ul>
+<li><strong>print</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().print(),不仅可以打印输出文本格式的（包括html标签），还可以将一个对象以默认的编码方式转换为二进制字节输出</li>
+<li><strong>writer</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().writer(),只能打印输出文本格式的（包括html标签），不可以打印对象</li>
+</ul>
+</li>
+<li><p>java.sql.Date是java.util.Date的子类</p>
+</li>
+<li><p>bootstrap中偏移元素：class指定 col-md-offset-4  向右移四格</p>
+</li>
+<li><p>进行转发时可以是用相对路径，重定向时必须使用绝对路径，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(request.getContextPath()+<span class="string">"/login.html"</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>使用原生jdbc用预处理PreparedStatement设置参数，添加日期对象时：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps.setDate(<span class="number">3</span>,java.sql.Date.valueOf(<span class="string">"1999-11-11"</span>));</span><br></pre></td></tr></table></figure></li>
+<li><p>实现comparable接口的comparaTo方法</p>
+<ul>
+<li>实现comparable接口的comparaTo方法当前的减去传进来的，大于0返回1 从升序</li>
+<li>利用comparator接口重写compare方法前面的减去后面的升序</li>
+</ul>
+</li>
+<li><p>1个中文:</p>
+<ul>
+<li>GBK:2个字节</li>
+<li>UTF-8:3个字节</li>
+</ul>
+</li>
+<li><p>使用管理员身份打开cmd后</p>
+<ul>
+<li>net start mysql : 启动mysql的服务</li>
+<li>net stop mysql : 关闭mysql的服务   </li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dbutils的使用（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
