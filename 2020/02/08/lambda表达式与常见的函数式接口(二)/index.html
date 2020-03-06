@@ -6,28 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo笔记 | 风落尘归去</title>
+  <title>lambda表达式与常见的函数式接口（二） | 风落尘归去</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、搭建流程">
+  <meta name="description" content="第三章 常用的函数式接口JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。 下面是最简单的几个接口及使用示例。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo笔记">
-<meta property="og:url" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="lambda表达式与常见的函数式接口（二）">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3(%E4%BA%8C)/index.html">
 <meta property="og:site_name" content="风落尘归去">
-<meta property="og:description" content="一、搭建流程">
+<meta property="og:description" content="第三章 常用的函数式接口JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。 下面是最简单的几个接口及使用示例。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203215.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203453.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211135.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211300.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211718.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png">
 <meta property="article:published_time" content="2020-02-08T13:41:38.000Z">
-<meta property="article:modified_time" content="2020-03-06T02:26:11.131Z">
+<meta property="article:modified_time" content="2020-03-06T04:14:45.241Z">
 <meta property="article:author" content="yecol">
 <meta property="article:tag" content="平时笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png">
   
     <link rel="alternative" href="/atom.xml" title="风落尘归去" type="application/atom+xml">
   
@@ -159,19 +151,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-lambda表达式与常见的函数式接口(二)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo笔记
+      lambda表达式与常见的函数式接口（二）
     </h1>
   
 
         
-        <a href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+        <a href="/2020/02/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3(%E4%BA%8C)/" class="archive-article-date">
   	<time datetime="2020-02-08T13:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
 </a>
         
@@ -179,100 +171,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、搭建流程"><a href="#一、搭建流程" class="headerlink" title="一、搭建流程"></a>一、搭建流程</h2><a id="more"></a>
+        <h1 id="第三章-常用的函数式接口"><a href="#第三章-常用的函数式接口" class="headerlink" title="第三章 常用的函数式接口"></a>第三章 常用的函数式接口</h1><p>JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。 下面是最简单的几个接口及使用示例。</p>
+<a id="more"></a>
 
+<h2 id="3-1-Supplier接口"><a href="#3-1-Supplier接口" class="headerlink" title="3.1 Supplier接口"></a>3.1 Supplier接口</h2><p><code>java.util.function.Supplier&lt;T&gt;</code>接口仅包含一个无参的方法： T get() 。用来获取一个泛型参数指定类型的对象数据。由于这是一个函数式接口，这也就意味着对应的Lambda表达式需要“对外提供”一个符合泛型类型的对象数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Demo03Supplier &#123;</span><br><span class="line">    private static String  getString(Supplier&lt;String&gt; supplier) &#123;</span><br><span class="line">        return supplier.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str1 &#x3D; &quot;Hello &quot;;</span><br><span class="line">        String str2 &#x3D; &quot;world&quot;;</span><br><span class="line">        System.out.println(getString(() -&gt; str1+str2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-Consumer接口"><a href="#3-2-Consumer接口" class="headerlink" title="3.2 Consumer接口"></a>3.2 Consumer接口</h2><p><code>java.util.function.Consumer&lt;T&gt;</code>接口则正好与Supplier接口相反，它不是生产一个数据，而是消费一个数据， 其数据类型由泛型决定。</p>
+<h3 id="抽象方法accept"><a href="#抽象方法accept" class="headerlink" title="抽象方法accept"></a>抽象方法accept</h3><p>Consumer 接口中包含抽象方法 <code>void accept(Tt)</code>，意为消费一个指定泛型的数据。基本使用如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    public class Demo05Consumer &#123;</span><br><span class="line">    private static void consumerString(Consumer&lt;String&gt; consumer) &#123;</span><br><span class="line">        consumer.accept(&quot;hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        consumerString(s -&gt; System.out.println(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认方法：-andThen"><a href="#默认方法：-andThen" class="headerlink" title="默认方法：*andThen"></a>默认方法：*andThen</h3><p>如果一个方法的参数和返回值全都是<code>Consumer</code>类型，那么就可以实现效果：消费数据的时候，首先做一个操作， 然后再做一个操作，实现组合。而这个方法就是<code>Consumer</code>接口中的default方法<code>andThen</code>。下面是JDK的源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">default Consumer&lt;T&gt; andThen(Consumer&lt;? super T&gt; after) &#123;</span><br><span class="line">    Objects.requireNonNull(after);</span><br><span class="line">    return (T t) -&gt; &#123; accept(t); after.accept(t); &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>备注：<code>java.util.Objects</code>的<code>requireNonNull</code>静态方法将会在参数为null时主动抛出<code>NullPointerException</code>异常。这省去了重复编写if语句和抛出空指针异常的麻烦</p>
+</blockquote>
+<p>要想实现组合，需要两个或多个lambda表达式即可，而<code>andThen</code>的语义正是“一步接一步”操作。例如两个步骤组合的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo06ConsumerAndThen &#123;</span><br><span class="line">    private static void consumeString (Consumer&lt;String&gt; one,Consumer&lt;String&gt; two) &#123;</span><br><span class="line">        one.andThen(two).accept(&quot;Hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        consumeString(s -&gt; System.out.println(s.toUpperCase()),</span><br><span class="line">                s -&gt; System.out.println(s.toLowerCase()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果将会首先打印完全大写的HELLO，然后打印完全小写的hello。当然，通过链式写法可以实现更多步骤的组合。如果在consumeString中使用<code>one.andThen(two).andThen(one)</code>这样来写的话会先大写，再小写，最后又变回大写。由于<code>andThen</code>方式的返回值也为<code>Consumer</code>类型，使用起来会变得十分的灵活</p>
+<h3 id="使用Consumer的案例"><a href="#使用Consumer的案例" class="headerlink" title="使用Consumer的案例"></a>使用Consumer的案例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;打印数组中人物的姓名性别</span><br><span class="line">public class Demo07print &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String[] array &#x3D; &#123; &quot;迪丽热巴,女&quot;, &quot;古力娜扎,女&quot;, &quot;马尔扎哈,男&quot; &#125;;</span><br><span class="line">        printInfo(s -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;姓名：&quot; + s.split(&quot;,&quot;)[0]);</span><br><span class="line">        &#125;,s -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;性别：&quot; + s.split(&quot;,&quot;)[1]);</span><br><span class="line">        &#125;,array);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void printInfo(Consumer&lt;String&gt; one,Consumer&lt;String&gt; two,String[] array) &#123;</span><br><span class="line">        for (String s : array) &#123;</span><br><span class="line">            one.andThen(two).accept(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-Predicate接口"><a href="#3-3-Predicate接口" class="headerlink" title="3.3 Predicate接口"></a>3.3 Predicate接口</h2><p>有时候我们需要对某种类型的数据进行判断，从而得到一个boolean值结果。这时可以使用 <code>java.util.function.Predicate&lt;T&gt;</code>接口。</p>
+<h3 id="抽象方法-test"><a href="#抽象方法-test" class="headerlink" title="抽象方法: test"></a>抽象方法: test</h3><p><code>Predicate</code>接口中包含一个抽象方法：<code>boolean test(T t)</code>。用于条件判断的场景：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo01predicte &#123;</span><br><span class="line">    private static void validity(Predicate&lt;String&gt; predicate) &#123;</span><br><span class="line">        boolean flag &#x3D; predicate.test(&quot;HelloWorld&quot;);</span><br><span class="line">        System.out.println(&quot;字符串很长吗？&quot; + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        validity(s -&gt; s.length() &gt; 10);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认方法：and"><a href="#默认方法：and" class="headerlink" title="默认方法：and"></a>默认方法：and</h3><p>既然是条件判断，就会存在与、或、非三种常见的逻辑关系。其中将两个Predicate条件使用“与”逻辑连接起来实现“并且”的效果时，可以使用default方法 and 。其JDK源码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">default Predicate&lt;T&gt; and(Predicate&lt;? super T&gt; other) &#123;</span><br><span class="line">    Objects.requireNonNull(other);</span><br><span class="line">    return (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判断字符串长度既要大于5又要包含”H”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo02predicte &#123;</span><br><span class="line">    private static void validity(Predicate&lt;String&gt; p1,Predicate&lt;String&gt; p2) &#123;</span><br><span class="line">        boolean flag &#x3D; p1.and(p2).test(&quot;HelloWorld&quot;);</span><br><span class="line">        System.out.println(&quot;字符串符合要求吗？&quot; + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        validity(s -&gt; s.length() &gt; 5,s -&gt; s.contains(&quot;H&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认方法or类似</p>
+</blockquote>
+<h3 id="默认方法：negate"><a href="#默认方法：negate" class="headerlink" title="默认方法：negate"></a>默认方法：negate</h3><p>“与”、“或”已经了解了，剩下的“非”（取反）也会简单。默认方法 negate 的JDK源代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">default Predicate&lt;T&gt; negate() &#123;</span><br><span class="line">    return (t) -&gt; !test(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从实现中很容易看出，它是执行了test方法之后，对结果boolean值进行“!”取反而已。一定要在 test 方法调用之前调用<code>negate</code>方法，正如 and 和 or 方法一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo03predicte &#123;</span><br><span class="line">    private static void validity(Predicate&lt;String&gt; predicate) &#123;</span><br><span class="line">        boolean flag &#x3D; predicate.negate().test(&quot;HelloWorld&quot;);</span><br><span class="line">        System.out.println(&quot;字符串很长吗？&quot; + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        validity(s -&gt; s.length() &gt; 10);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-Function接口"><a href="#3-4-Function接口" class="headerlink" title="3.4 Function接口"></a>3.4 Function接口</h2><p><code>java.util.function.Function&lt;T,R&gt;</code>接口用来根据一个类型的数据得到另一个类型的数据，前者称为前置条件， 后者称为后置条件。</p>
+<h3 id="抽象方法：apply"><a href="#抽象方法：apply" class="headerlink" title="抽象方法：apply"></a>抽象方法：apply</h3><p><code>Function</code>接口中最主要的抽象方法为：<code>R apply(T t)</code>，根据类型<code>T</code>的参数获取类型<code>R</code>的结果。使用的场景例如：将<code>String</code>类型转换为 <code>Integer</code>类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo01 &#123;</span><br><span class="line">    private static void method(Function&lt;String,Integer&gt; function) &#123;</span><br><span class="line">        Integer integer &#x3D; function.apply(&quot;10&quot;);</span><br><span class="line">        System.out.println(integer + 8);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        method(s -&gt; Integer.parseInt(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认方法：andThen"><a href="#默认方法：andThen" class="headerlink" title="默认方法：andThen"></a>默认方法：andThen</h3><p><code>Function</code>接口中有一个默认的<code>andThen</code>方法，用来进行组合操作。JDK源代码如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">default &lt;V&gt; Function&lt;T, V&gt; andThen(Function&lt;? super R, ? extends V&gt; after) &#123;</span><br><span class="line">    Objects.requireNonNull(after);</span><br><span class="line">    return (T t) -&gt; after.apply(apply(t));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法同样用于“先做什么，再做什么”的场景，和<code>Consumer</code>中的<code>andThen</code>差不多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Demo02 &#123;</span><br><span class="line">    private static void method(Function&lt;String,Integer&gt; f1,Function&lt;Integer,Integer&gt; f2) &#123;</span><br><span class="line">        Integer integer &#x3D; f1.andThen(f2).apply(&quot;10&quot;);</span><br><span class="line">        System.out.println(integer + 8);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        method(s -&gt; Integer.parseInt(s)+10,i -&gt; i *&#x3D; 10);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里就是先把字符串10解析成整数的10，再加上10，然后乘以10，最后加上8，结果为208</p>
+<h3 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h3><p>要求：</p>
+<p>请使用<code>Function</code>进行函数模型的拼接，按照顺序需要执行的多个函数操作为：</p>
 <ol>
-<li><p>Hexo是基于node框架来搭建的，所以要先下载<a href="http://nodejs.cn/" target="_blank" rel="noopener">node.js</a></p>
-</li>
-<li><p>查看node版本，来看是否成功安装  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p>显示结果： </p>
-<p>​    <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png" alt="版本"></p>
-</li>
-<li><p>安装一个cnpm来提高下载速度,在查看是否安装完成  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">cnpm</span><br></pre></td></tr></table></figure>
-
-<p>​       <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203215.png" alt="验证"> </p>
-</li>
-<li><p>使用cnpm下载Hexo,并验证是否安装成功  </p>
-</li>
+<li>将字符串截取数字年龄部分，得到字符串；</li>
+<li>将上一步的字符串转换成为int类型的数字；</li>
+<li>将上一步的int数字累加100，得到结果int数字。</li>
 </ol>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></code></pre><p> ​      <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203453.png" alt="验证">   </p>
-<ol start="5">
-<li><p>搭建博客</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到上面我们的博客就已经初始化完成了，有一些常用的命名  </p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清除缓存文件 db.json 和已生成的静态文件 public 。网站显示异常时	可以执行这条命令试试。</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d <span class="comment"># 自动生成网站静态文件，把文件上传到远端</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment"># 生成网站静态文件到默认设置的 public 文件夹</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s <span class="comment"># 启动本地hexo服务器，默认端口4000</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>重新部署更新(下面这条命令会经常用到)</strong></p>
-<p><strong>(</strong>hexo clean –&gt;hexo generate –&gt;hexo deploy)</p>
-<ol start="7">
-<li><p>如果想要在远端访问我们的博客，可以把传到github上，在github上创建仓库,仓库名为 （github名）.github.io</p>
-</li>
-<li><p>安装一个hexo的git插件  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在博客目录的配置文件(_config.yml)下做如下修改：  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/yecolccc/yecolccc.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们就可以将本地博客推送到远端   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们想要换主题，用终端命令下载  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia theme/yilia</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="二、用自己的域名解析github的博客域名"><a href="#二、用自己的域名解析github的博客域名" class="headerlink" title="二、用自己的域名解析github的博客域名"></a>二、用自己的域名解析github的博客域名</h2><ol>
-<li>点击自己仓库，点击Settings  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211135.png" alt="github仓库设置"></p>
-<ol start="2">
-<li>向下滑动，找到这个进行修改  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211300.png" alt="设置域名"></p>
-<ol start="3">
-<li>来到域名解析页面,这个时候我才发现不能同时解析两个域名（或服务器）<strong>A表示的解析服务器，CNAME表示解析域名</strong>，一个域名只能指定一个ip，一个ip可以被多个域名解析  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211718.png" alt="修改配置"></p>
-<h2 id="三、出过的一些错误"><a href="#三、出过的一些错误" class="headerlink" title="三、出过的一些错误"></a>三、出过的一些错误</h2><ol>
-<li><p>hexo d后 ERROR Deployer not found: git  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>网页上图片不显示。这个问题花费了我一些时间，不过也算简单吧，好像是我之前的那个图片驱动用不了，现在换了一个好多了，什么什么的 hexo p 命名觉得作用并不明显。  </p>
-<ul>
-<li><p>首先我们需要安装一个图片路径转换的插件，这个插件名字是hexo-asset-image </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开_config.yml文件，修改下述内容 </p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>这一点也是关键，在当前目录创建一个和md文件名称完全一样的目录，并将图片存放里面 </p>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png" alt="目录结构"></p>
-</li>
-</ul>
+<p>解答：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Demo03 &#123;</span><br><span class="line">    private static int method(Function&lt;String,String&gt; f1,Function&lt;String,Integer&gt; f2,Function&lt;Integer,Integer&gt; f3,String string) &#123;</span><br><span class="line">        Integer integer &#x3D; f1.andThen(f2).andThen(f3).apply(string);</span><br><span class="line">        return integer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str &#x3D; &quot;赵丽颖,20&quot;;</span><br><span class="line">        int result &#x3D; method(s -&gt; s.split(&quot;,&quot;)[1], s -&gt; Integer.parseInt(s), i -&gt; i +&#x3D; 100, str);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -373,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3(%E4%BA%8C)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -387,18 +339,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3(%E4%B8%80)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          dbutils的使用（一）
+          lambda表达式与常见的函数式接口（一）
         
       </div>
     </a>
   
   
-    <a href="/2020/02/08/java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java基本数据类型</div>
+    <a href="/2020/02/08/%E9%87%8D%E5%86%99hashcode%E5%92%8Cequals%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">重写hashcode方法和equals方法</div>
       <i class="icon-circle-right"></i>
     </a>
   

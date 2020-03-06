@@ -6,28 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo笔记 | 风落尘归去</title>
+  <title>重写hashcode方法和equals方法 | 风落尘归去</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、搭建流程">
+  <meta name="description" content="一、前言我们都知道，要比较两个对象是否相等时需要调用对象的equals()方法，即判断对象引用所指向的对象地址是否相等，”&#x3D;&#x3D;”和”equals”最开始都是比较对象的地址值，只是各个类可以重写从Object类中的”equals”方法，如String重写后可以比较值相等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo笔记">
-<meta property="og:url" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="重写hashcode方法和equals方法">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/%E9%87%8D%E5%86%99hashcode%E5%92%8Cequals%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="风落尘归去">
-<meta property="og:description" content="一、搭建流程">
+<meta property="og:description" content="一、前言我们都知道，要比较两个对象是否相等时需要调用对象的equals()方法，即判断对象引用所指向的对象地址是否相等，”&#x3D;&#x3D;”和”equals”最开始都是比较对象的地址值，只是各个类可以重写从Object类中的”equals”方法，如String重写后可以比较值相等。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203215.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203453.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211135.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211300.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211718.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png">
 <meta property="article:published_time" content="2020-02-08T13:41:38.000Z">
-<meta property="article:modified_time" content="2020-03-06T02:26:11.131Z">
+<meta property="article:modified_time" content="2020-03-06T03:39:40.446Z">
 <meta property="article:author" content="yecol">
 <meta property="article:tag" content="平时笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png">
   
     <link rel="alternative" href="/atom.xml" title="风落尘归去" type="application/atom+xml">
   
@@ -159,19 +151,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-重写hashcode和equals方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo笔记
+      重写hashcode方法和equals方法
     </h1>
   
 
         
-        <a href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+        <a href="/2020/02/08/%E9%87%8D%E5%86%99hashcode%E5%92%8Cequals%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2020-02-08T13:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
 </a>
         
@@ -179,100 +171,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、搭建流程"><a href="#一、搭建流程" class="headerlink" title="一、搭建流程"></a>一、搭建流程</h2><a id="more"></a>
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>我们都知道，要比较两个对象是否相等时需要调用对象的equals()方法，即判断对象引用所指向的对象地址是否相等，”==”和”equals”最开始都是比较对象的地址值，只是各个类可以重写从Object类中的”equals”方法，如<code>String</code>重写后可以比较值相等。</p>
+<a id="more"></a>
 
-<ol>
-<li><p>Hexo是基于node框架来搭建的，所以要先下载<a href="http://nodejs.cn/" target="_blank" rel="noopener">node.js</a></p>
-</li>
-<li><p>查看node版本，来看是否成功安装  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>对象地址相等时，那么与对象相关的对象句柄、对象头、对象实例数据、对象类型数据等也是完全一致的，所以我们可以通过比较对象的地址来判断是否相等。</p>
+<h2 id="二、Object源码理解"><a href="#二、Object源码理解" class="headerlink" title="二、Object源码理解"></a>二、Object源码理解</h2><p>对象在不重写的情况下使用的是Object的equals方法和hashcode方法，从Object类的源码我们知道，默认的equals 判断的是两个对象的引用指向的是不是同一个对象；而hashcode也是根据对象地址生成一个整数数值。</p>
+<p>另外我们可以看到Object的hashcode()方法的修饰符为native,表明该方法为操作系统实现，==java调用操作系统底层代码获取哈希值==。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">public class Object &#123;</span><br><span class="line"> </span><br><span class="line">public native int hashCode();</span><br><span class="line"> </span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Indicates whether some other object is &quot;equal to&quot; this one.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * The &#123;@code equals&#125; method implements an equivalence relation</span><br><span class="line">     * on non-null object references:</span><br><span class="line">     * &lt;ul&gt;</span><br><span class="line">     * &lt;li&gt;It is &lt;i&gt;reflexive&lt;&#x2F;i&gt;: for any non-null reference value</span><br><span class="line">     *     &#123;@code x&#125;, &#123;@code x.equals(x)&#125; should return</span><br><span class="line">     *     &#123;@code true&#125;.</span><br><span class="line">     * &lt;li&gt;It is &lt;i&gt;symmetric&lt;&#x2F;i&gt;: for any non-null reference values</span><br><span class="line">     *     &#123;@code x&#125; and &#123;@code y&#125;, &#123;@code x.equals(y)&#125;</span><br><span class="line">     *     should return &#123;@code true&#125; if and only if</span><br><span class="line">     *     &#123;@code y.equals(x)&#125; returns &#123;@code true&#125;.</span><br><span class="line">     * &lt;li&gt;It is &lt;i&gt;transitive&lt;&#x2F;i&gt;: for any non-null reference values</span><br><span class="line">     *     &#123;@code x&#125;, &#123;@code y&#125;, and &#123;@code z&#125;, if</span><br><span class="line">     *     &#123;@code x.equals(y)&#125; returns &#123;@code true&#125; and</span><br><span class="line">     *     &#123;@code y.equals(z)&#125; returns &#123;@code true&#125;, then</span><br><span class="line">     *     &#123;@code x.equals(z)&#125; should return &#123;@code true&#125;.</span><br><span class="line">     * &lt;li&gt;It is &lt;i&gt;consistent&lt;&#x2F;i&gt;: for any non-null reference values</span><br><span class="line">     *     &#123;@code x&#125; and &#123;@code y&#125;, multiple invocations of</span><br><span class="line">     *     &#123;@code x.equals(y)&#125; consistently return &#123;@code true&#125;</span><br><span class="line">     *     or consistently return &#123;@code false&#125;, provided no</span><br><span class="line">     *     information used in &#123;@code equals&#125; comparisons on the</span><br><span class="line">     *     objects is modified.</span><br><span class="line">     * &lt;li&gt;For any non-null reference value &#123;@code x&#125;,</span><br><span class="line">     *     &#123;@code x.equals(null)&#125; should return &#123;@code false&#125;.</span><br><span class="line">     * &lt;&#x2F;ul&gt;</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * The &#123;@code equals&#125; method for class &#123;@code Object&#125; implements</span><br><span class="line">     * the most discriminating possible equivalence relation on objects;</span><br><span class="line">     * that is, for any non-null reference values &#123;@code x&#125; and</span><br><span class="line">     * &#123;@code y&#125;, this method returns &#123;@code true&#125; if and only</span><br><span class="line">     * if &#123;@code x&#125; and &#123;@code y&#125; refer to the same object</span><br><span class="line">     * (&#123;@code x &#x3D;&#x3D; y&#125; has the value &#123;@code true&#125;).</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Note that it is generally necessary to override the &#123;@code hashCode&#125;</span><br><span class="line">     * method whenever this method is overridden, so as to maintain the</span><br><span class="line">     * general contract for the &#123;@code hashCode&#125; method, which states</span><br><span class="line">     * that equal objects must have equal hash codes.</span><br><span class="line">     *</span><br><span class="line">     * @param   obj   the reference object with which to compare.</span><br><span class="line">     * @return  &#123;@code true&#125; if this object is the same as the obj</span><br><span class="line">     *          argument; &#123;@code false&#125; otherwise.</span><br><span class="line">     * @see     #hashCode()</span><br><span class="line">     * @see     java.util.HashMap</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public boolean equals(Object obj) &#123;</span><br><span class="line">        return (this &#x3D;&#x3D; obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>显示结果： </p>
-<p>​    <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png" alt="版本"></p>
-</li>
-<li><p>安装一个cnpm来提高下载速度,在查看是否安装完成  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">cnpm</span><br></pre></td></tr></table></figure>
+<h2 id="三、需要重写equals-的场景"><a href="#三、需要重写equals-的场景" class="headerlink" title="三、需要重写equals()的场景"></a>三、需要重写equals()的场景</h2><p>假设现在有很多学生对象，默认情况下，要判断多个学生对象是否相等，需要根据地址判断，若对象地址相等，那么对象的实例数据一定是一样的，但现在我们规定：==当学生的姓名、年龄、性别相等时，认为学生对象是相等的，不一定需要对象地址完全相同==。</p>
+<p>例如学生A对象所在地址为100，学生A的个人信息为（姓名：A,性别:女，年龄：18，住址：北京软件路999号，体重：48），学生A对象所在地址为388，学生A的个人信息为（姓名：A,性别:女，年龄：18，住址：广州暴富路888号，体重：55），这时候如果不重写Object的equals方法，那么返回的一定是false不相等，这个时候就需要我们根据自己的需求重写equals()方法了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package hashTest;</span><br><span class="line"> </span><br><span class="line">public class Student &#123;</span><br><span class="line">	private String name;&#x2F;&#x2F; 姓名</span><br><span class="line">	private String sex;&#x2F;&#x2F; 性别</span><br><span class="line">	private String age;&#x2F;&#x2F; 年龄</span><br><span class="line">	private float weight;&#x2F;&#x2F; 体重</span><br><span class="line">	private String addr;&#x2F;&#x2F; 地址</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 重写equals方法</span><br><span class="line">	@Override</span><br><span class="line">	public boolean equals(Object obj) &#123;</span><br><span class="line">		if(!(obj instanceof Student)) &#123;</span><br><span class="line">       &#x2F;&#x2F; instanceof 已经处理了obj &#x3D; null的情况</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		Student stuObj &#x3D; (Student) obj;</span><br><span class="line">		&#x2F;&#x2F; 地址相等</span><br><span class="line">		if (this &#x3D;&#x3D; stuObj) &#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F; 如果两个对象姓名、年龄、性别相等，我们认为两个对象相等</span><br><span class="line">		if (stuObj.name.equals(this.name) &amp;&amp; stuObj.sex.equals(this.sex) &amp;&amp; stuObj.age.equals(this.age)) &#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"> </span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public String getSex() &#123;</span><br><span class="line">		return sex;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public void setSex(String sex) &#123;</span><br><span class="line">		this.sex &#x3D; sex;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public String getAge() &#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public void setAge(String age) &#123;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public float getWeight() &#123;</span><br><span class="line">		return weight;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public void setWeight(float weight) &#123;</span><br><span class="line">		this.weight &#x3D; weight;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public String getAddr() &#123;</span><br><span class="line">		return addr;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public void setAddr(String addr) &#123;</span><br><span class="line">		this.addr &#x3D; addr;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​       <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203215.png" alt="验证"> </p>
-</li>
-<li><p>使用cnpm下载Hexo,并验证是否安装成功  </p>
-</li>
-</ol>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></code></pre><p> ​      <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203453.png" alt="验证">   </p>
-<ol start="5">
-<li><p>搭建博客</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到上面我们的博客就已经初始化完成了，有一些常用的命名  </p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清除缓存文件 db.json 和已生成的静态文件 public 。网站显示异常时	可以执行这条命令试试。</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d <span class="comment"># 自动生成网站静态文件，把文件上传到远端</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment"># 生成网站静态文件到默认设置的 public 文件夹</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s <span class="comment"># 启动本地hexo服务器，默认端口4000</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>重新部署更新(下面这条命令会经常用到)</strong></p>
-<p><strong>(</strong>hexo clean –&gt;hexo generate –&gt;hexo deploy)</p>
-<ol start="7">
-<li><p>如果想要在远端访问我们的博客，可以把传到github上，在github上创建仓库,仓库名为 （github名）.github.io</p>
-</li>
-<li><p>安装一个hexo的git插件  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在博客目录的配置文件(_config.yml)下做如下修改：  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/yecolccc/yecolccc.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们就可以将本地博客推送到远端   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们想要换主题，用终端命令下载  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia theme/yilia</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="二、用自己的域名解析github的博客域名"><a href="#二、用自己的域名解析github的博客域名" class="headerlink" title="二、用自己的域名解析github的博客域名"></a>二、用自己的域名解析github的博客域名</h2><ol>
-<li>点击自己仓库，点击Settings  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211135.png" alt="github仓库设置"></p>
-<ol start="2">
-<li>向下滑动，找到这个进行修改  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211300.png" alt="设置域名"></p>
-<ol start="3">
-<li>来到域名解析页面,这个时候我才发现不能同时解析两个域名（或服务器）<strong>A表示的解析服务器，CNAME表示解析域名</strong>，一个域名只能指定一个ip，一个ip可以被多个域名解析  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211718.png" alt="修改配置"></p>
-<h2 id="三、出过的一些错误"><a href="#三、出过的一些错误" class="headerlink" title="三、出过的一些错误"></a>三、出过的一些错误</h2><ol>
-<li><p>hexo d后 ERROR Deployer not found: git  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>网页上图片不显示。这个问题花费了我一些时间，不过也算简单吧，好像是我之前的那个图片驱动用不了，现在换了一个好多了，什么什么的 hexo p 命名觉得作用并不明显。  </p>
-<ul>
-<li><p>首先我们需要安装一个图片路径转换的插件，这个插件名字是hexo-asset-image </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开_config.yml文件，修改下述内容 </p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>这一点也是关键，在当前目录创建一个和md文件名称完全一样的目录，并将图片存放里面 </p>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png" alt="目录结构"></p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package hashTest;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Student s1 &#x3D;new Student();</span><br><span class="line">		s1.setAddr(&quot;1111&quot;);</span><br><span class="line">		s1.setAge(&quot;20&quot;);</span><br><span class="line">		s1.setName(&quot;allan&quot;);</span><br><span class="line">		s1.setSex(&quot;male&quot;);</span><br><span class="line">		s1.setWeight(60f);</span><br><span class="line">		Student s2 &#x3D;new Student();</span><br><span class="line">		s2.setAddr(&quot;222&quot;);</span><br><span class="line">		s2.setAge(&quot;20&quot;);</span><br><span class="line">		s2.setName(&quot;allan&quot;);</span><br><span class="line">		s2.setSex(&quot;male&quot;);</span><br><span class="line">		s2.setWeight(70f);</span><br><span class="line">		if(s1.equals(s2)) &#123;</span><br><span class="line">			System.out.println(&quot;s1&#x3D;&#x3D;s2&quot;);</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			System.out.println(&quot;s1 !&#x3D; s2&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由上面的例子我们会发现，在重写equals()方法之前，输出结果<code>s1 != s2</code>而重写后为<code>s1==s2</code>。通过这个例子，我们已经解决了值相等的需求，可是我们什么时候需要重写hashCode()方法呢?</p>
+<h2 id="四、需要重写hashcode-的场景"><a href="#四、需要重写hashcode-的场景" class="headerlink" title="四、需要重写hashcode()的场景"></a>四、需要重写hashcode()的场景</h2><h3 id="4-1-HashSet测试"><a href="#4-1-HashSet测试" class="headerlink" title="4.1 HashSet测试"></a>4.1 HashSet测试</h3><p>在上面的测试类里面加入一下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Student&gt; set &#x3D; new HashSet&lt;Student&gt;();</span><br><span class="line">		set.add(s1);</span><br><span class="line">		set.add(s2);</span><br><span class="line">		System.out.println(set);</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1&#x3D;&#x3D;s2</span><br><span class="line">[hashTest.Student@5f8ed237, hashTest.Student@57fa26b7]</span><br></pre></td></tr></table></figure>
+<p>这里我们会发现，表面上这两个对象相等，可是我们的<code>set</code>里面会有两个元素，可是<code>HashSet</code>不是有去重的作用吗？</p>
+<p>这就涉及到<code>HashSet</code>的底层问题了，这里简单介绍下就是==HashSet的底层是通过HashMap实现的==，最终比较set容器内元素是否相等是通过比较对象的hashcode来判断的。</p>
+<p>我们再将上面的<code>Student</code>类中的<code>hashCode</code>方法重写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">	public int hashCode() &#123;</span><br><span class="line">		int result &#x3D; name.hashCode();</span><br><span class="line">		result &#x3D; 17 * result + sex.hashCode();</span><br><span class="line">		result &#x3D; 17 * result + age.hashCode();</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>发现输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1&#x3D;&#x3D;s2</span><br><span class="line">[hashTest.Student@43c2ce69]</span><br></pre></td></tr></table></figure>
+<p>或许会有一个疑问？hashcode里的代码该怎么理解？该如何写？</p>
+<p>其实有个相对固定的写法，先整理出你判断对象相等的属性，然后取一个尽可能小的正整数(尽可能小时怕最终得到的结果超出了整型int的取数范围)，这里我取了17，（在JDK源码中用的是31），然后计算17*属性的hashcode+其他属性的hashcode，重复步骤。</p>
+<h4 id="只重写hashCode方法又会怎样呢"><a href="#只重写hashCode方法又会怎样呢" class="headerlink" title="只重写hashCode方法又会怎样呢"></a>只重写hashCode方法又会怎样呢</h4><p>这里我很好奇，我们试过只重写<code>equals()</code>方法，重写<code>equals()</code>和<code>hashCode()</code>方法，那么只重写<code>hashCode()</code>方法又会怎样呢？<br>结果有点让我诧异:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1 !&#x3D; s2</span><br><span class="line">[hashTest.Student@43c2ce69, hashTest.Student@43c2ce69]</span><br></pre></td></tr></table></figure>
+<p>第一条不相等在我的预料之内，可是后面的表面上地址值相等可是也会有两条记录。原来==Set区别对象是不是唯一的标准是，两个对象hashcode是不是一样，再判定两个对象是否equals==。我们用的时候尽量两条一起重写吧，毕竟工具里面也是这么弄的~</p>
+<h3 id="4-2-HashMap测试"><a href="#4-2-HashMap测试" class="headerlink" title="4.2 HashMap测试"></a>4.2 HashMap测试</h3><p>使用以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map m &#x3D; new HashMap();</span><br><span class="line">		m.put(s1, s1);</span><br><span class="line">		m.put(s2, s2);</span><br><span class="line">		System.out.println(m);</span><br><span class="line">		System.out.println(((Student)m.get(s1)).getAddr());</span><br></pre></td></tr></table></figure>
+<p>没有重写<code>hashcode()和equals()</code>之前的结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;hashTest.Student@5f8ed237&#x3D;hashTest.Student@5f8ed237, hashTest.Student@57fa26b7&#x3D;hashTest.Student@57fa26b7&#125;</span><br><span class="line">1111</span><br></pre></td></tr></table></figure>
+<p>此时会有两条结果</p>
+<p>重写之后呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;hashTest.Student@abf5795c&#x3D;hashTest.Student@abf5795c&#125;</span><br><span class="line">222</span><br></pre></td></tr></table></figure>
+<p>这个时候<code>map</code>中只会有一条结果，由于<code>HashMap</code>中键不能相同，所以前一条记录会被下一条所覆盖</p>
 
       
 
@@ -373,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/%E9%87%8D%E5%86%99hashcode%E5%92%8Cequals%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -387,18 +322,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3(%E4%BA%8C)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          dbutils的使用（一）
+          lambda表达式与常见的函数式接口（二）
         
       </div>
     </a>
   
   
-    <a href="/2020/02/08/java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java基本数据类型</div>
+    <a href="/2020/02/08/%E8%A7%A3%E5%86%B3%E8%AE%A9%E6%89%80%E6%9C%89%E5%8F%91%E9%80%81%E7%9A%84%E8%AF%B7%E6%B1%82%E9%83%BD%E5%B8%A6%E4%B8%80%E4%B8%AAtoken/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">让所发的请求携带token</div>
       <i class="icon-circle-right"></i>
     </a>
   
