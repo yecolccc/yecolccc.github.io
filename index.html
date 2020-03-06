@@ -80,7 +80,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="/yecolccc." title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="http://yecolccc.github.com/" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1005686326&site=qq&menu=yes" title="qq"><i class="icon-qq"></i></a>
 		        
@@ -119,7 +119,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="/yecolccc." title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="http://yecolccc.github.com/" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1005686326&site=qq&menu=yes" title="qq"><i class="icon-qq"></i></a>
 			        
@@ -172,26 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><code>enum</code>的全称为<code>enumeration</code>， 是 JDK 1.5  中引入的新特性，存放在 java.lang包中。</p>
-<p>java中的枚举结构实际上是一个类，它继承与java中的一个抽象类<code>Enum</code>，因此不能继承</p>
-<p>枚举类可以像一般类一样实现接口，也可以增加自己的方法。<br><img src="https://img-blog.csdnimg.cn/20191207110707167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MDk2Njcw,size_16,color_FFFFFF,t_70" alt="image"></p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>枚举的定义结构,枚举的对象定义在结构的首行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">enum&#123;</span><br><span class="line">    对象1，对象2....对象n；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>枚举其实就是一个<strong>多例模式</strong>，所以要理解枚举，先要看一个多例模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Season &#123;</span><br><span class="line"></span><br><span class="line">    private static Season spring &#x3D; new Season(&quot;春&quot;);</span><br><span class="line">    private static Season summer &#x3D; new Season(&quot;夏&quot;);</span><br><span class="line">    private static Season autumn &#x3D; new Season(&quot;秋&quot;);</span><br><span class="line">    private static Season winner &#x3D; new Season(&quot;冬&quot;);</span><br><span class="line"></span><br><span class="line">    private String tittle;</span><br><span class="line"></span><br><span class="line">    public Season(String tittle) &#123;</span><br><span class="line">        this.tittle &#x3D; tittle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return this.tittle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Season getInterence(String st) &#123;</span><br><span class="line">        switch (st) &#123;</span><br><span class="line">            case &quot;春&quot;: return spring;</span><br><span class="line">            case &quot;夏&quot;: return summer;</span><br><span class="line">            case &quot;秋&quot;: return autumn;</span><br><span class="line">            case &quot;冬&quot;: return winner;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Season season &#x3D; Season.getInterence(&quot;春&quot;);</span><br><span class="line">        System.out.println(season); &#x2F;&#x2F;春</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们发现，这样写非常的繁杂，我们程序员是靠脑子吃饭的生物不能把时间浪费在写这种麻烦的东西上，于是我们想到了用枚举来进行改进</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public enum Season &#123;</span><br><span class="line">    &#x2F;&#x2F;相当于 private Season xxx &#x3D; new Seanson();</span><br><span class="line">    Spring,Summer,Fall,Winter;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Season[] seasons &#x3D; Season.values();&#x2F;&#x2F;取得当前枚举类所有对象</span><br><span class="line">        for (Season season : seasons) &#123;</span><br><span class="line">            &#x2F;&#x2F;ordinal()取得当前对象的索引</span><br><span class="line">            &#x2F;&#x2F;name()取得当前对象的名字</span><br><span class="line">            System.out.println(season.ordinal() + &quot;:&quot; + season.name());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0:Spring</span><br><span class="line">1:Summer</span><br><span class="line">2:Fall</span><br><span class="line">3:Winter</span><br></pre></td></tr></table></figure>
-
-<h2 id="常用的方法"><a href="#常用的方法" class="headerlink" title="常用的方法"></a>常用的方法</h2><ol>
-<li>构造方法：<code>public Enum(int ordinal,String name){}</code></li>
-<li>取得当前对象名<code>public final String name(){}</code></li>
-<li>取得当前对象索引<code>pulic final int ordinal(){}//从0开始</code></li>
-<li>取得当前枚举类的所有对象<code>values()</code> 返回一个对象数组</li>
-</ol>
-<p>注意：使用枚举需要进行==构造器的私有化==</p>
-<p>将上面实例改进</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">interface PrintHelper&#123;</span><br><span class="line">    void print();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum Season implements PrintHelper &#123;</span><br><span class="line">    &#x2F;&#x2F;相当于 private Season xxx &#x3D; new Seanson();</span><br><span class="line">    Spring(&quot;春&quot;),Summer(&quot;夏&quot;),Fall(&quot;秋&quot;),Winter(&quot;冬&quot;);</span><br><span class="line"></span><br><span class="line">    private String tittle;</span><br><span class="line">    private Season(String tittle) &#123;</span><br><span class="line">        this.tittle &#x3D; tittle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return this.tittle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void print() &#123;</span><br><span class="line">        System.out.println(this.name());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Season[] seasons &#x3D; Season.values();</span><br><span class="line">        System.out.println(seasons[0]);&#x2F;&#x2F;春  输出的tittle的值</span><br><span class="line">        seasons[1].print();&#x2F;&#x2F;Summer 输出的是name的值</span><br><span class="line">        System.out.println(Season.Fall);&#x2F;&#x2F;秋 直接输出对象 使用toString打印tittle</span><br><span class="line">        System.out.println(Season.Winter.ordinal());    &#x2F;&#x2F; 3 输出索引的值（从0开始）</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -251,13 +232,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/13/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue日期格式化</a>
+      <a class="article-title" href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue日期格式化</a>
     </h1>
   
 
         
-        <a href="/2020/02/13/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-02-13T08:19:02.524Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-13</time>
+        <a href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-02-26T03:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
 </a>
         
       </header>
@@ -267,20 +248,7 @@
         <blockquote>
 <p>今天在听阮总的录播遇到这个点要交给我处理，今天才看到是在有点愧疚，所以就花了点时间查了资料算是解决了这个问题。我在做的时候遇到了一些坑，不过我下面写的绝对是无坑可以直接食用的hhh</p>
 </blockquote>
-<ol>
-<li>首先将下面这段代码复制到admin-list.js中 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, fmt) &#123;</span><br><span class="line">    if (&#x2F;(y+)&#x2F;.test(fmt)) &#123;</span><br><span class="line">        fmt &#x3D; fmt.replace(RegExp.$1, (date.getFullYear() + &#39;&#39;).substr(4 - RegExp.$1.length));</span><br><span class="line">    &#125;</span><br><span class="line">    let o &#x3D; &#123;</span><br><span class="line">        &#39;M+&#39;: date.getMonth() + 1,</span><br><span class="line">        &#39;d+&#39;: date.getDate(),</span><br><span class="line">        &#39;h+&#39;: date.getHours(),</span><br><span class="line">        &#39;m+&#39;: date.getMinutes(),</span><br><span class="line">        &#39;s+&#39;: date.getSeconds()</span><br><span class="line">    &#125;;</span><br><span class="line">    for (let k in o) &#123;</span><br><span class="line">        if (new RegExp(&#96;($&#123;k&#125;)&#96;).test(fmt)) &#123;</span><br><span class="line">            let str &#x3D; o[k] + &#39;&#39;;</span><br><span class="line">            fmt &#x3D; fmt.replace(RegExp.$1, (RegExp.$1.length &#x3D;&#x3D;&#x3D; 1) ? str : padLeftZero(str));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return fmt;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function padLeftZero(str) &#123;</span><br><span class="line">    return (&#39;00&#39; + str).substr(str.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>然后在自己的Vue中添加以下代码（过滤器）,注意这里的hh要用小写的这种</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   filters: &#123;</span><br><span class="line">    formatDate(time) &#123;</span><br><span class="line">    var date &#x3D; new Date(time);</span><br><span class="line">    return formatDate(date, &#39;yyyy-MM-dd hh:mm:ss&#39;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最后我们就可以在遍历的时候轻轻松松的取值啦~ 是不是很简单呢</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;&#123;&#123;admin.admin_date | formatDate&#125;&#125;&lt;&#x2F;td&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+        
       
 
       
@@ -288,11 +256,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/13/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
         </p>
       
 
@@ -329,131 +308,21 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">摘要汇总（2020-02-12）</a>
+      <a class="article-title" href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">摘要汇总</a>
     </h1>
   
 
         
-        <a href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-02-12T09:17:36.079Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
+        <a href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-02-25T05:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>我在继承使用反射执行方法的BaseServlet时，子类中的方法访问修饰符只能用public</p>
-</li>
-<li><p>SpringBoot开启驼峰命名法：mybatis.configuration.map-underscore-to-camel-case=true</p>
-</li>
-<li><p>@Resources与@AutoWired的区别：</p>
-<ul>
-<li>使用mybatis注解开发时，在mapper上只用了@mapper注解，没有@Component注解，因此在控制层使用@Autowired自动装配时会报错，可是又可以使用（老师说是idea的问题）</li>
-<li>此时使用@Resource注解就不报错了，具体原因是@Autowired是按照类型注入，而@Reources是按照名称注入的。暂时猜想可能是因为默认这个mapper只是一个接口，不符合组件的类型吧</li>
-</ul>
-</li>
-<li><p>Junit在pom文件中scope用的test，导致只能在专用的test包内才能用单元测试。想要在源码中(java)弄测试，需要让scope中属性用compile</p>
-</li>
-<li><p>idea查看实现类的快捷键：Ctrl + H</p>
-</li>
-<li><p>一直想找的eclipse的快捷键：shift+alt+s</p>
-</li>
-<li><p>button的type属性：</p>
-<ul>
-<li>submit:提交表单（除IE外的默认）</li>
-<li>button:可以点击的按钮</li>
-<li>reset:清除表单的数据</li>
-</ul>
-</li>
-<li><p>request.getSession(true|false):</p>
-<ul>
-<li>true 如果有则返回 没有则创建（默认）</li>
-<li>false 如果有则返回 没有则返回null</li>
-</ul>
-</li>
-<li><p>url:通用资源标识符 &nbsp; &nbsp;url：统一资源定位符</p>
-</li>
-<li><p>get和post请求的区别：数长可缓</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>get</th>
-<th>post</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>数据类型</td>
-<td>文本</td>
-<td>文本、二进制</td>
-</tr>
-<tr>
-<td>长度</td>
-<td>255</td>
-<td>无限制</td>
-</tr>
-<tr>
-<td>可见性</td>
-<td>可见</td>
-<td>不可见</td>
-</tr>
-<tr>
-<td>被浏览器缓存</td>
-<td>可以</td>
-<td>不可以</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>pageContext.request.contextPath表示获取根路径 在jsp中广泛使用</p>
-</li>
-<li><p>允许跨域 ：response.setHeader(“Access-Control-Allow-Origin”, “*”);</p>
-</li>
-<li><p>解决服务器响应数据乱码（通过设置mime类型）</p>
-<ul>
-<li>返回的是json类型 response.setContentType(“application/json;charset=utf-8”);</li>
-<li>返回的是html mhsr.setHeader(“content-type”, “text/html;charset=utf-8”);</li>
-</ul>
-</li>
-<li><p>可以用上下文对象获取WEB-INF/下的文件，如</p>
-<ul>
-<li>this.getServletContext().getRealPath(“WEB-INF/conf/dbconfig.properties);</li>
-</ul>
-</li>
-<li><p>response.getWriter下的两个方法：</p>
-<ul>
-<li><strong>print</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().print(),不仅可以打印输出文本格式的（包括html标签），还可以将一个对象以默认的编码方式转换为二进制字节输出</li>
-<li><strong>writer</strong>&nbsp;&nbsp;&nbsp;<br>response.getWriter().writer(),只能打印输出文本格式的（包括html标签），不可以打印对象</li>
-</ul>
-</li>
-<li><p>java.sql.Date是java.util.Date的子类</p>
-</li>
-<li><p>bootstrap中偏移元素：class指定 col-md-offset-4  向右移四格</p>
-</li>
-<li><p>进行转发时可以是用相对路径，重定向时必须使用绝对路径，如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(request.getContextPath()+<span class="string">"/login.html"</span>);</span><br></pre></td></tr></table></figure></li>
-<li><p>使用原生jdbc用预处理PreparedStatement设置参数，添加日期对象时：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps.setDate(<span class="number">3</span>,java.sql.Date.valueOf(<span class="string">"1999-11-11"</span>));</span><br></pre></td></tr></table></figure></li>
-<li><p>实现comparable接口的comparaTo方法</p>
-<ul>
-<li>实现comparable接口的comparaTo方法当前的减去传进来的，大于0返回1 从升序</li>
-<li>利用comparator接口重写compare方法前面的减去后面的升序</li>
-</ul>
-</li>
-<li><p>1个中文:</p>
-<ul>
-<li>GBK:2个字节</li>
-<li>UTF-8:3个字节</li>
-</ul>
-</li>
-<li><p>使用管理员身份打开cmd后</p>
-<ul>
-<li>net start mysql : 启动mysql的服务</li>
-<li>net stop mysql : 关闭mysql的服务   </li>
-</ul>
-</li>
-</ol>
-
+        <h2 id="下面是我一些零散知识的汇总"><a href="#下面是我一些零散知识的汇总" class="headerlink" title="下面是我一些零散知识的汇总"></a>下面是我一些零散知识的汇总</h2>
+        
       
 
       
@@ -461,11 +330,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/12/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -517,30 +397,7 @@
       
         <h2 id="一、自定义封装数据"><a href="#一、自定义封装数据" class="headerlink" title="一、自定义封装数据"></a>一、自定义封装数据</h2><p>以封装表中多行数据为一个list为例</p>
 <p>需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放</p>
-<p>解决代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.自定义ResultSetHandler,封装员工数据</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resultSetHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"SELECT e.id,e.lastName,e.email,e.gender,e.d_id,d.departmentName FROM employee e LEFT JOIN department d ON e.d_id = d.id"</span>;</span><br><span class="line">    List&lt;Employee&gt; employeeList = qr.query(sql, <span class="keyword">new</span> ResultSetHandler&lt;List&lt;Employee&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">handle</span><span class="params">(ResultSet resultSet)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">            <span class="comment">//创建集合对象</span></span><br><span class="line">            ArrayList&lt;Employee&gt; employees = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">//遍历resultSet</span></span><br><span class="line">            <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">                <span class="comment">//创建员工对象</span></span><br><span class="line">                Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">                <span class="comment">//创建部门对象</span></span><br><span class="line">                Department department = <span class="keyword">new</span> Department();</span><br><span class="line">                <span class="comment">//封装员工中的普通数据</span></span><br><span class="line">                employee.setId(resultSet.getInt(<span class="number">1</span>));</span><br><span class="line">                employee.setLastName(resultSet.getString(<span class="number">2</span>));</span><br><span class="line">                employee.setEmail(resultSet.getString(<span class="string">"email"</span>));</span><br><span class="line">                employee.setGender(resultSet.getInt(<span class="string">"gender"</span>));</span><br><span class="line">                <span class="comment">//封装员工中的外部数据</span></span><br><span class="line">                department.setId(resultSet.getInt(<span class="string">"d_id"</span>));</span><br><span class="line">                department.setDepartmentName(resultSet.getString(<span class="number">6</span>));</span><br><span class="line">                <span class="comment">//员工中封装部门数据</span></span><br><span class="line">                employee.setDepartment(department);</span><br><span class="line">                <span class="comment">//员工集合中封装员工数据</span></span><br><span class="line">                employees.add(employee);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> employees;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employeeList) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打印结果：</p>
-<pre><code>Employee{id=1, lastName=&apos;张三&apos;, email=&apos;123@qq.com&apos;, gender=1, department=Department [id=1, departmentName=研发部]}
-Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gender=0, department=Department [id=1, departmentName=研发部]}</code></pre><h2 id="二、ThreadLocal管理连接"><a href="#二、ThreadLocal管理连接" class="headerlink" title="二、ThreadLocal管理连接"></a>二、ThreadLocal管理连接</h2><p>ThreadLocal的原理较为复杂，现在不作讨论，算是留给以后的一个任务~</p>
-<h3 id="2-1-将连接与线程绑定，保证连接的唯一"><a href="#2-1-将连接与线程绑定，保证连接的唯一" class="headerlink" title="2.1 将连接与线程绑定，保证连接的唯一"></a>2.1 将连接与线程绑定，保证连接的唯一</h3><p>实现代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; tl = <span class="keyword">new</span> ThreadLocal&lt;Connection&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		Connection conn = tl.get();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//第一次是空</span></span><br><span class="line">		<span class="keyword">if</span>(conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//从数据源取</span></span><br><span class="line">			conn = C3P0Uitls.getConnection();</span><br><span class="line">			tl.set(conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-实现事务的管理"><a href="#2-2-实现事务的管理" class="headerlink" title="2.2 实现事务的管理"></a>2.2 实现事务的管理</h3><p>实现代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开启事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beginTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 回滚事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rollbackTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().rollback();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提交事务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">commitTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		getConnection().commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<pre><code>要想实现事务的管理，在我们使用QueryRunner执行方法时必须使用这个类获取的连接，
-不能在构造方法中传入数据源，从而保证连接的唯一性。</code></pre><h2 id="三、QueryRunner的批处理"><a href="#三、QueryRunner的批处理" class="headerlink" title="三、QueryRunner的批处理"></a>三、QueryRunner的批处理</h2><h3 id="3-1-举例"><a href="#3-1-举例" class="headerlink" title="3.1 举例"></a>3.1 举例</h3><p>如果我们想要一次性在部门表中添加多条数据，或者说是添加多个部门，我们先将部门对象放在一个集合里面，下面说一下我们传统的方法。</p>
-<h3 id="3-2-传统方法解决批量添加"><a href="#3-2-传统方法解决批量添加" class="headerlink" title="3.2 传统方法解决批量添加"></a>3.2 传统方法解决批量添加</h3><p>遍历集合，一个一个添加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.传统的方法解决批量添加问题</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertMoreOld</span><span class="params">(List&lt;Department&gt; departments)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"insert into department(departmentName) values (?)"</span>;</span><br><span class="line">    <span class="comment">//遍历这个集合</span></span><br><span class="line">    <span class="keyword">for</span> (Department department : departments) &#123;</span><br><span class="line">        <span class="comment">//定义一个object数值存放参数</span></span><br><span class="line">        List&lt;Object&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        params.add(department.getDepartmentName());</span><br><span class="line">        qr.update(sql,params.toArray());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>问题：</p>
-<ol>
-<li>如果在插入某一条数据出现了问题，那么已经插入了的还是会插入，事务不会得到控制</li>
-<li>每一次执行一条sql语句会给我们的系统带来过多的开销</li>
-</ol>
-<h3 id="3-3-使用批处理-batch"><a href="#3-3-使用批处理-batch" class="headerlink" title="3.3 使用批处理(batch)"></a>3.3 使用批处理(batch)</h3><p>对上面方法的改进：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.批处理的方法解决批量添加问题</span><br><span class="line">public void insertMoreNew(List&lt;Department&gt; departments) throws SQLException &#123;</span><br><span class="line">    String sql &#x3D; &quot;insert into department(departmentName) values (?)&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建一个二维数组</span><br><span class="line">    Object[][] params &#x3D; new Object[departments.size()][];</span><br><span class="line">    &#x2F;&#x2F;给二位数组中的元素赋值(通过赋值一维数组 也就是在堆空间中再分别添加一个一维数组的引用)</span><br><span class="line">    for (int i &#x3D; 0; i &lt; params.length; i++) &#123;</span><br><span class="line">        Department department &#x3D; departments.get(i);</span><br><span class="line">        params[i] &#x3D; new Object[]&#123;department.getDepartmentName()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;批处理执行sql语句</span><br><span class="line">    qr.batch(ManagerThreadLocal.getConnection(),sql,params);</span><br></pre></td></tr></table></figure>
-<p>备注：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">此处的ManagerThreadLocal的实现就是上面事务管理代码</span><br><span class="line">使用批处理既能优化性能又能实现事务控制</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -615,41 +472,7 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
       
         <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。</p>
 <p>DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。</p>
-<p>DBUtils三个核心功能介绍：</p>
-<ol>
-<li>QueryRunner中提供对sql语句操作的API</li>
-<li>ResultSetHandler接口，用于定义select操作后，自定义封装结果集</li>
-<li>DBUtils类，它就是一个工具类，定义了关闭资源与事务处理的方法</li>
-</ol>
-<h2 id="二、QueryRunner核心类"><a href="#二、QueryRunner核心类" class="headerlink" title="二、QueryRunner核心类"></a>二、QueryRunner核心类</h2><ol>
-<li>QueryRunner(DataSourcr ds),提供数据源（连接池），DbUtils底层==自动维护连接connection==，我们无需手动关闭连接创建连接</li>
-<li>update（String sql，Obj…params），执行更新数据（对数据的增删改）</li>
-<li>query（String sql，ResultSetHandler<T>rsh,Object…panrams)，执行查询</T></li>
-</ol>
-<h2 id="三、ResultSetHandler结果集处理类"><a href="#三、ResultSetHandler结果集处理类" class="headerlink" title="三、ResultSetHandler结果集处理类"></a>三、ResultSetHandler结果集处理类</h2><ul>
-<li>ArrayHandler：适合取1条记录，把结果集中的第一行数据转成对象数组。</li>
-<li>ArrayListHandler：适合取多条记录，把结果集中的每一行数据都转成一个对象数组，再存放到List中。</li>
-<li>BeanHandler：将结果集中的第一行数据封装到一个对应的JavaBean实例中（把每条记录封装成对象，适合取一条记录）</li>
-<li>==BeanListHandler==：将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。</li>
-<li>==MapHandler==：将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。</li>
-<li>MapListHandler：将结果集中的每一行数据都封装到一个Map里，然后再存放到List</li>
-<li>ColumnListHandler：将结果集中某一列的数据存放到List中。</li>
-<li>*KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里(List<Map>)，再把这些map再存到一个map里，其key为指定的列。</Map></li>
-<li>ScalarHandler:将结果集第一行的某一列放到某个对象中</li>
-</ul>
-<h2 id="四、代码举例"><a href="#四、代码举例" class="headerlink" title="四、代码举例"></a>四、代码举例</h2><p>以常见的部门员工表为例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.ArrayHandler：将查询的结果的第一行放到一个数组中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Object[] query = qr.query(sql, <span class="keyword">new</span> ArrayHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object o : query) &#123;</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.ArrayListHandler：将查询的结果的每一行放到一个数组中，然后再将数组放到集合中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Object[]&gt; objects = qr.query(sql, <span class="keyword">new</span> ArrayListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Object[] object : objects) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Object o : object) &#123;</span><br><span class="line">            System.out.println(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3.BeanHandler：将查询的结果的第一行封装到一份javabean对象中</span></span><br><span class="line"><span class="comment">//由于外键department处存放的一个对象，所以未能进行封装</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beanHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Employee employee = qr.query(sql, <span class="keyword">new</span> BeanHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    System.out.println(employee);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.BeanListHandler：将查询的结果的每一行封装到一个javabean对象中，然后再将这些对象存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BeanListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Employee&gt; employees = qr.query(sql, <span class="keyword">new</span> BeanListHandler&lt;&gt;(Employee<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    <span class="keyword">for</span> (Employee employee : employees) &#123;</span><br><span class="line">        System.out.println(employee);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//5.MapHandler：将查询的结果的第一行存入到一个map中，键为列名，值为各列值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    Map&lt;String, Object&gt; map = qr.query(sql, <span class="keyword">new</span> MapHandler());</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询结果为：</span></span><br><span class="line"><span class="comment">//    &#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//6.MapListHandler：将查询的结果的每一行存入到一个map中，键为列名，值为各列值；然后再将map存入list中</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mapListHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; list = qr.query(sql, <span class="keyword">new</span> MapListHandler());</span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : list) &#123;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//&#123;lastName=张三, gender=1, d_id=1, id=1, email=123@qq.com&#125;</span></span><br><span class="line"><span class="comment">//&#123;lastName=李四, gender=0, d_id=1, id=2, email=321@163.com&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//7.ScalarHandler：将查询的结果的第一行的某一列放到一个对象中；精确定位到某个值</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scalarHandlerTest</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String sql = <span class="string">"select * from employee"</span>;</span><br><span class="line">    <span class="comment">//已知第二列为lastName，将Object类型强转为String类型</span></span><br><span class="line">    String lastName = (String) qr.query(sql,<span class="keyword">new</span> ScalarHandler(<span class="number">2</span>));</span><br><span class="line">    System.out.println(lastName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//张三</span></span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -722,99 +545,8 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、搭建流程"><a href="#一、搭建流程" class="headerlink" title="一、搭建流程"></a>一、搭建流程</h2><ol>
-<li><p>Hexo是基于node框架来搭建的，所以要先下载<a href="http://nodejs.cn/" target="_blank" rel="noopener">node.js</a></p>
-</li>
-<li><p>查看node版本，来看是否成功安装  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p>显示结果： </p>
-<p>​    <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E5%9B%BE%E7%89%8720200208201512.png" alt="版本"></p>
-</li>
-<li><p>安装一个cnpm来提高下载速度,在查看是否安装完成  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">cnpm</span><br></pre></td></tr></table></figure>
-
-<p>​       <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203215.png" alt="验证"> </p>
-</li>
-<li><p>使用cnpm下载Hexo,并验证是否安装成功  </p>
-</li>
-</ol>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></code></pre><p> ​      <img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208203453.png" alt="验证">   </p>
-<ol start="5">
-<li><p>搭建博客</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到上面我们的博客就已经初始化完成了，有一些常用的命名  </p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清除缓存文件 db.json 和已生成的静态文件 public 。网站显示异常时	可以执行这条命令试试。</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d <span class="comment"># 自动生成网站静态文件，把文件上传到远端</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment"># 生成网站静态文件到默认设置的 public 文件夹</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s <span class="comment"># 启动本地hexo服务器，默认端口4000</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>重新部署更新(下面这条命令会经常用到)</strong></p>
-<p><strong>(</strong>hexo clean –&gt;hexo generate –&gt;hexo deploy)</p>
-<ol start="7">
-<li><p>如果想要在远端访问我们的博客，可以把传到github上，在github上创建仓库,仓库名为 （github名）.github.io</p>
-</li>
-<li><p>安装一个hexo的git插件  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在博客目录的配置文件(_config.yml)下做如下修改：  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/yecolccc/yecolccc.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们就可以将本地博客推送到远端   </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这时候我们想要换主题，用终端命令下载  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia theme/yilia</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件  </p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="二、用自己的域名解析github的博客域名"><a href="#二、用自己的域名解析github的博客域名" class="headerlink" title="二、用自己的域名解析github的博客域名"></a>二、用自己的域名解析github的博客域名</h2><ol>
-<li>点击自己仓库，点击Settings  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211135.png" alt="github仓库设置"></p>
-<ol start="2">
-<li>向下滑动，找到这个进行修改  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211300.png" alt="设置域名"></p>
-<ol start="3">
-<li>来到域名解析页面,这个时候我才发现不能同时解析两个域名（或服务器）<strong>A表示的解析服务器，CNAME表示解析域名</strong>，一个域名只能指定一个ip，一个ip可以被多个域名解析  </li>
-</ol>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208211718.png" alt="修改配置"></p>
-<h2 id="三、出过的一些错误"><a href="#三、出过的一些错误" class="headerlink" title="三、出过的一些错误"></a>三、出过的一些错误</h2><ol>
-<li><p>hexo d后 ERROR Deployer not found: git  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>网页上图片不显示。这个问题花费了我一些时间，不过也算简单吧，好像是我之前的那个图片驱动用不了，现在换了一个好多了，什么什么的 hexo p 命名觉得作用并不明显。  </p>
-<ul>
-<li><p>首先我们需要安装一个图片路径转换的插件，这个插件名字是hexo-asset-image </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开_config.yml文件，修改下述内容 </p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>这一点也是关键，在当前目录创建一个和md文件名称完全一样的目录，并将图片存放里面 </p>
-<p><img src="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200208222757.png" alt="目录结构"></p>
-</li>
-</ul>
-
+        <h2 id="一、搭建流程"><a href="#一、搭建流程" class="headerlink" title="一、搭建流程"></a>一、搭建流程</h2>
+        
       
 
       
@@ -888,20 +620,7 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="一、-Spring的常用配置"><a href="#一、-Spring的常用配置" class="headerlink" title="一、 Spring的常用配置"></a>一、 Spring的常用配置</h1><h2 id="1-1-Bean的Scope属性"><a href="#1-1-Bean的Scope属性" class="headerlink" title="1.1 Bean的Scope属性"></a>1.1 Bean的Scope属性</h2><p>Scope属性描述时Spring容器如何新建Bean实例的时候，可以通过@Scope注解来实现。有一下几种指定：</p>
-<ol>
-<li>Singleton：一个Spring容器只有一个Sprin实例，是Spring的默认属性，全容器共享一个属性</li>
-<li>protorype：每次调用创建一个Bean实例</li>
-<li>Request：Web项目中，给每一个http request新建一个Bean实例</li>
-<li>Session：Web项目总，给每一个http session新建一个Bean实例</li>
-<li>GlobalSession：只有在<strong>portal应用</strong>中起作用，给每一个global http session新建一个Bean实例</li>
-</ol>
-<h2 id="1-2-Bean的初始化与销毁"><a href="#1-2-Bean的初始化与销毁" class="headerlink" title="1.2 Bean的初始化与销毁"></a>1.2 Bean的初始化与销毁</h2><p>我们在开发的时候，需要Bean在使用之前或者之后做成必要的操作。在java配置和注解配置提供了如下两种方式：</p>
-<ol>
-<li>java配置方式：使用@Bean的initMethod和destroyMethod(相当于xml配置的init-method和destory-method)</li>
-<li>注解方式：使用JSR-250的@PostConstruct和@PreDestoryC</li>
-</ol>
-<p>执行顺序：Bean-init方法，构造函数，JSR250-init,JSP250-destroy,Bean-destory</p>
-
+        
       
 
       
@@ -914,82 +633,6 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/02/08/SpringBoot/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-02-08T02:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>这里就可以自由自在的写内容</p>
-<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>程序员的博客一般都要用这种md格式来编写了哈</p>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p><a href="http://www.yecolccc.cn/blog" target="_blank" rel="noopener">www.yecolccc.cn/blog</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">haha</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
         </p>
       
 
@@ -1032,7 +675,7 @@ Employee{id=2, lastName=&apos;李四&apos;, email=&apos;321@163.com&apos;, gende
     		&copy; 2020 yecol
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		
       	</div>
     </div>
   </div>
@@ -1120,7 +763,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">haha</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1183,7 +826,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">哎呀呀&lt;br&gt;&lt;br&gt;简单小码农一枚&lt;br&gt;谢谢支持</div>
   	  	
     	</section>
     
