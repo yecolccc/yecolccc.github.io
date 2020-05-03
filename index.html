@@ -151,6 +151,415 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/03/git%E7%AC%94%E8%AE%B0/">Git笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/03/git%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-05-03T12:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本笔记来源于狂神说</p>
+</blockquote>
+<h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1 版本控制"></a>1 版本控制</h2><h3 id="1-1-什么是版本控制"><a href="#1-1-什么是版本控制" class="headerlink" title="1.1 什么是版本控制"></a>1.1 什么是版本控制</h3><p>版本控制（Revision control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+<ul>
+<li>实现跨区域多人协同开发</li>
+<li>追踪和记载一个或者多个文件的历史记录</li>
+<li>组织和保护你的源代码和文档</li>
+<li>统计工作量</li>
+<li>并行开发、提高开发效率</li>
+<li>跟踪记录整个软件的开发过程</li>
+<li>减轻开发人员的负担，节省时间，同时降低人为错误</li>
+</ul>
+<p>简单说就是==用于管理多人协同开发项目的技术==。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/03/git%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JDK8日期类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/JDK8%E6%97%A5%E6%9C%9F%E7%B1%BB/">Java8时间类</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/01/JDK8%E6%97%A5%E6%9C%9F%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2020-05-01T12:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-为什么要学习新版日期类"><a href="#1-为什么要学习新版日期类" class="headerlink" title="1 为什么要学习新版日期类"></a>1 为什么要学习新版日期类</h2><ul>
+<li><p>对于日期的计算繁琐，且容易出错</p>
+<p><img src="/2020/05/01/JDK8%E6%97%A5%E6%9C%9F%E7%B1%BB/QQ%E6%88%AA%E5%9B%BE20200424182719.png" alt="繁琐"></p>
+</li>
+<li><p>线程安全问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> SimpleDateFormat SDF = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                Date date = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    date = SDF.parse(<span class="string">"2020-12-20 12:12:12"</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(date);</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行的话会报错，这是由于线程的安全性导致的，下面是报错的原理图</p>
+<img src="/2020/05/01/JDK8%E6%97%A5%E6%9C%9F%E7%B1%BB/QQ截图20200424184240.png" alt="线程安全" style="zoom:100%;">
+
+<p>由于全局使用的是<strong>同一个calendar对象</strong>。如果没有线程同步措施的话,那么可能会造成线程安全问题。</p></li></ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/01/JDK8%E6%97%A5%E6%9C%9F%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringMVC笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/SpringMVC%E7%AC%94%E8%AE%B0/">SpringMVC笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/28/SpringMVC%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-04-28T12:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>什么是MVC框架</p>
+<p><img src="/2020/04/28/SpringMVC%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200403234259.png" alt="mvc"></p>
+<p>SpringMVC的工作流程</p>
+<p><img src="/2020/04/28/SpringMVC%E7%AC%94%E8%AE%B0/QQ%E6%88%AA%E5%9B%BE20200403235051.png" alt="流程"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/28/SpringMVC%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySql高级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/MySql%E9%AB%98%E7%BA%A7/">MySql高级笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/26/MySql%E9%AB%98%E7%BA%A7/" class="archive-article-date">
+  	<time datetime="2020-04-26T07:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、Mysql简介"><a href="#一、Mysql简介" class="headerlink" title="一、Mysql简介"></a>一、Mysql简介</h1><h2 id="1-1-什么是Mysql"><a href="#1-1-什么是Mysql" class="headerlink" title="1.1 什么是Mysql"></a>1.1 什么是Mysql</h2><ul>
+<li>MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。 </li>
+<li>Mysql 是开源的，可以定制的，采用了 GPL 协议，你可以修改源码来开发自己的 Mysql 系统。</li>
+<li>MySQL 使用标准的 SQL 数据语言形式。</li>
+<li>Mysql 可以允许于多个系统上，并且支持多种语言。这些编程语言包括 C、C++、Python、Java、Perl、PHP、 Eiffel、Ruby 和 Tcl 等。</li>
+<li>MySQL 支持大型数据库，支持 5000 万条记录的数据仓库，32 位系统表文件最大可支持 4GB，64 位系统支持最大的表文件为 8TB。</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/MySql%E9%AB%98%E7%BA%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Stream流与方法引用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/08/Stream%E6%B5%81%E4%B8%8E%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/">Mybatis笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/08/Stream%E6%B5%81%E4%B8%8E%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-04-08T12:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、Stream流"><a href="#一、Stream流" class="headerlink" title="一、Stream流"></a>一、Stream流</h1><p>在Java 8中，得益于Lambda所带 来的函数式编程，引入了一个<strong>全新的</strong>Stream概念，用于解决已有集合类库既有的弊端。</p>
+<h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>传统集合多步遍历代码，循环遍历存在着弊端。java8的lambda表达式让我们更加专注于<strong>做什么</strong>而不是<strong>怎么做</strong>，我们在java8以前，做集合信息筛选时可能如发生如下做法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="string">"张无忌"</span>);</span><br><span class="line">    list.add(<span class="string">"周芷若"</span>);</span><br><span class="line">    list.add(<span class="string">"赵敏"</span>);</span><br><span class="line">    list.add(<span class="string">"张强"</span>);</span><br><span class="line">    list.add(<span class="string">"张三丰"</span>);</span><br><span class="line">    List&lt;String&gt; zhangList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (String name : list) &#123;</span><br><span class="line">        <span class="keyword">if</span> (name.startsWith(<span class="string">"张"</span>)) &#123;</span><br><span class="line">            zhangList.add(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;String&gt; shortList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (String name : zhangList) &#123;</span><br><span class="line">        <span class="keyword">if</span> (name.length() == <span class="number">3</span>) &#123;</span><br><span class="line">            shortList.add(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String name : shortList) &#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Stream更优雅的写法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="string">"张无忌"</span>);</span><br><span class="line">    list.add(<span class="string">"周芷若"</span>);</span><br><span class="line">    list.add(<span class="string">"赵敏"</span>);</span><br><span class="line">    list.add(<span class="string">"张强"</span>);</span><br><span class="line">    list.add(<span class="string">"张三丰"</span>);</span><br><span class="line">    list.stream().filter(s -&gt; s.startsWith(<span class="string">"张"</span>)) </span><br><span class="line">        .filter(s -&gt; s.length() == <span class="number">3</span>) </span><br><span class="line">        .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>filte</code>、<code>map</code>、<code>skip</code>都是在对函数模型进行操作，集合元素并没有真正被处理。只有当终结方法<code>count</code>执行的时候，整个模型才会按照指定策略执行操作。而这得益于Lambda的<strong>延迟执行特性</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/08/Stream%E6%B5%81%E4%B8%8E%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,383 +930,9 @@
 
 
   
-    <article id="post-vue日期格式化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">vue日期格式化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-02-26T03:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>今天在听阮总的录播遇到这个点要交给我处理，今天才看到是在有点愧疚，所以就花了点时间查了资料算是解决了这个问题。我在做的时候遇到了一些坑，不过我下面写的绝对是无坑可以直接食用的hhh</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/vue%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-摘要汇总（2020-02-12）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">摘要汇总</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-02-25T05:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="下面是我一些零散知识的汇总"><a href="#下面是我一些零散知识的汇总" class="headerlink" title="下面是我一些零散知识的汇总"></a>下面是我一些零散知识的汇总</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/25/%E6%91%98%E8%A6%81%E6%B1%87%E6%80%BB%EF%BC%882020-02-12%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dbutils的使用（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">dbutils的使用（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、自定义封装数据"><a href="#一、自定义封装数据" class="headerlink" title="一、自定义封装数据"></a>一、自定义封装数据</h2><p>以封装表中多行数据为一个list为例</p>
-<p>需求:现在员工表中有两条数据，需要将其封装成javaBean对象并用一个list来存放</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dbutils的使用（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">dbutils的使用（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>DBUtils是Java编程中的数据库操作实用工具，小巧简单实用。</p>
-<p>DBUtils封装了对JDBC的操作，简化了JDBC操作，可以少写代码。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/11/dbutils%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/">Hexo笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-02-08T13:41:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、搭建流程"><a href="#一、搭建流程" class="headerlink" title="一、搭建流程"></a>一、搭建流程</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/08/Hexo%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
