@@ -6,25 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>java泛型笔记 | 风落尘归去</title>
+  <title>面试题(一) | 风落尘归去</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、概述1.1 背景​    JAVA推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够存储任意的数据类型对象，而在使用该集合的过程中，需要程序员明确知道存储每个元素的数据类型，否则很容易引发ClassCastException异常。">
+  <meta name="description" content="1、Redis集群在查找key时，是如果进行路由的 使用crc16算法对key进行hash  将hash值对16384进行取模，得到具体的槽位  根据节点和槽位的映射信息（与集群建立连接后，客户端可以取得槽位映射信息），找到具体的节点地址  去具体的节点找key 如果key不在这个节点上，则redis集群会返回moved指令，加上新的节点地址给客户端，同时客户端会刷新本地的节点槽位的映射关系。 如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java泛型笔记">
-<meta property="og:url" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/index.html">
+<meta property="og:title" content="面试题(一)">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/Interview1/index.html">
 <meta property="og:site_name" content="风落尘归去">
-<meta property="og:description" content="一、概述1.1 背景​    JAVA推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够存储任意的数据类型对象，而在使用该集合的过程中，需要程序员明确知道存储每个元素的数据类型，否则很容易引发ClassCastException异常。">
+<meta property="og:description" content="1、Redis集群在查找key时，是如果进行路由的 使用crc16算法对key进行hash  将hash值对16384进行取模，得到具体的槽位  根据节点和槽位的映射信息（与集群建立连接后，客户端可以取得槽位映射信息），找到具体的节点地址  去具体的节点找key 如果key不在这个节点上，则redis集群会返回moved指令，加上新的节点地址给客户端，同时客户端会刷新本地的节点槽位的映射关系。 如">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311102708.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311114909.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311115609.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311123754.png">
-<meta property="article:published_time" content="2020-03-11T10:36:38.000Z">
-<meta property="article:modified_time" content="2020-03-11T10:36:26.309Z">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/XS2esJew19YSMVKWPykcZicj2oSETxjwoMtyWfQzSuhG1euFFEiaiaf2nqJqWIcQruwib4Nkckgrc3DLYUiaJdeYKpw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/XS2esJew19YSMVKWPykcZicj2oSETxjwokPaI5z1f5pkrEsMpC9AQm6ku72Xs20ib4tQK245lUsQG0PzibibAhuduw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/XS2esJew19YSMVKWPykcZicj2oSETxjwoZ5REmWNMFzVx5e3WrPicCDKfYxXL48gu2nI6kYcWP6TeJ4Og6LLPvnw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191105205545651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly90aGlua3dvbi5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-06-14T12:11:38.000Z">
+<meta property="article:modified_time" content="2020-06-16T14:51:10.721Z">
 <meta property="article:author" content="yecol">
-<meta property="article:tag" content="平时笔记">
+<meta property="article:tag" content="面试准备">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311102708.png">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/XS2esJew19YSMVKWPykcZicj2oSETxjwoMtyWfQzSuhG1euFFEiaiaf2nqJqWIcQruwib4Nkckgrc3DLYUiaJdeYKpw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="风落尘归去" type="application/atom+xml">
   
@@ -156,231 +156,223 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-java泛型" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Interview1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      java泛型笔记
+      面试题(一)
     </h1>
   
 
         
-        <a href="/2020/03/11/java%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T10:36:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
+        <a href="/2020/06/14/Interview1/" class="archive-article-date">
+  	<time datetime="2020-06-14T12:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-背景"><a href="#1-1-背景" class="headerlink" title="1.1 背景"></a>1.1 背景</h2><p>​    JAVA推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够存储任意的数据类型对象，而在使用该集合的过程中，需要程序员明确知道存储每个元素的数据类型，否则很容易引发<code>ClassCastException</code>异常。</p>
+        <h3 id="1、Redis集群在查找key时，是如果进行路由的"><a href="#1、Redis集群在查找key时，是如果进行路由的" class="headerlink" title="1、Redis集群在查找key时，是如果进行路由的"></a>1、Redis集群在查找key时，是如果进行路由的</h3><ul>
+<li><p>使用<code>crc16算法</code>对key进行hash</p>
+</li>
+<li><p>将hash值对16384进行取模，得到具体的槽位</p>
+</li>
+<li><p>根据节点和槽位的映射信息（与集群建立连接后，客户端可以取得槽位映射信息），找到具体的节点地址</p>
+</li>
+<li><p>去具体的节点找key</p>
+<p>如果key不在这个节点上，则redis集群会返回moved指令，加上新的节点地址给客户端，同时客户端会刷新本地的节点槽位的映射关系。</p>
+<p>如果槽位正在迁移中，那么redis集群会返回asking指令给客户端，就是临床纠正，客户端不会刷新本地的节点和槽位映射关系。</p>
+</li>
+</ul>
 <a id="more"></a>
 
-<h2 id="1-2-泛型的概念"><a href="#1-2-泛型的概念" class="headerlink" title="1.2 泛型的概念"></a>1.2 泛型的概念</h2><p>​    Java泛型(generics) 是<code>JDK5</code>中引入的一个新特性，泛型提供了编译时<strong>类型安全监测机制</strong>，该机制允许我们在编译时检测到非法的类型数据结构。</p>
-<p>​    泛型的本质就是<strong>参数化类型</strong>，也就是所操作的数据类型被指定为一一个参数。</p>
-<p>好处：</p>
-<ul>
-<li>编译器进行检查，使得类型安全</li>
-<li>减少了数据类型转换</li>
-</ul>
-<h1 id="二、泛型类、接口"><a href="#二、泛型类、接口" class="headerlink" title="二、泛型类、接口"></a>二、泛型类、接口</h1><h2 id="2-1-泛型类"><a href="#2-1-泛型类" class="headerlink" title="2.1 泛型类"></a>2.1 泛型类</h2><p>泛型类的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class 类名称&lt;泛型标识，泛型标识，...&gt; &#123;</span><br><span class="line">	private 泛型标识 变量名;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>常用的泛型标识: T、E、K、V</p>
-<p>泛型类的创建:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 泛型类的定义</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt; 泛型表示 类似形参</span></span><br><span class="line"><span class="comment"> *           T创建对象的之后再指定具体的参数类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> T key;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Generic</span><span class="params">(T key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(T key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Generic&#123;"</span> +</span><br><span class="line">                <span class="string">"key="</span> + key +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用语法:</p>
-<p>​    类名&lt;具体的数据类型&gt; 对象名 =  new 类名&lt;具体的数据类型&gt;();</p>
-<p>注意：</p>
-<ul>
-<li><code>java1.7</code>以后，后面的&lt;&gt;中的具体的数据类型可以省略不写(菱形语法)</li>
-<li>泛型类在创建对象时，没有指定类型，将安装<code>Object</code>类来操作</li>
-<li>泛型不能指定为基本数据类型，因为在编译时开始是安装<code>Object</code>来编译的，后来再转换的</li>
-<li>同一泛型类，根据不同的数据类型创建的对象，本质上是同一类型(类类型)</li>
-</ul>
-<p>从泛型类派生子类：</p>
-<ul>
-<li><p>子类是泛型类，子类和父类的泛型类型要保持一致，比如下面的泛型标识都为<code>T</code> 。子类也可以进行泛型的扩充</p>
-<p><code>class ChildGeneric&lt;T&gt; extends Generic&lt;T&gt;</code></p>
-</li>
-<li><p>子类不是泛型类，父类要明确泛型的数据类型如<code>String</code></p>
-<p><code>class ChildGeneric extends Generic&lt;String&gt;</code></p>
-</li>
-</ul>
-<h2 id="2-2-泛型接口"><a href="#2-2-泛型接口" class="headerlink" title="2.2 泛型接口"></a>2.2 泛型接口</h2><p>泛型接口的定义语法:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> 接口名称 &lt;泛型标识,泛型标识,...&gt;</span>&#123;</span><br><span class="line">	泛型标识 方法名();</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>泛型接口的使用</p>
-<ul>
-<li>实现类不是泛型类，接口要明确数据类型</li>
-<li>实现类也是泛型类，实现类和接口的数据类型要一致，并且实现类可以进行泛型的扩充</li>
-</ul>
-<h1 id="三、泛型方法"><a href="#三、泛型方法" class="headerlink" title="三、泛型方法"></a>三、泛型方法</h1><p>泛型类与泛型方法的区别:</p>
-<ul>
-<li>泛型类，是实例化类的时候指明泛型的具体类型</li>
-<li>实例方法，是在实例化方法时执行泛型的具体类型</li>
-</ul>
-<p>语法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 &lt;T， E, ...&gt; 返回值类型方法名 (形参列表) &#123;</span><br><span class="line">	方法体...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>public</code>（访问修饰符）中间<T>非常重要，可以理解为声明此方法为泛型方法</T></li>
-<li>只有声明了<T>的方法才是泛型方法，<strong>泛型类中使用了泛型的成员方法并不是泛型方法</strong><ul>
-<li>泛型方法可以为静态的，而泛型类中的成员方法不能设置为静态的</li>
-</ul>
-</T></li>
-<li><T>表示该方法使用泛型类型T,此时才可以在方法中使用泛型类型T</T></li>
-<li>与泛型类的定义一样，此处T可以随意为任意标识，常见的有T,E,K,V等形式的参数常用于指定泛型</li>
-</ul>
-<p>例如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Random random = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 定义泛型方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> list  方法参数</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> &lt;E&gt;   泛型标识，具体类型又调用方法来指定</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> &lt;E&gt; <span class="function">E <span class="title">getProduct</span><span class="params">(ArrayList&lt;E&gt; list)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> list.get(random.nextInt(list.size()));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们在调用方法时传入一个<code>ArrayList</code>并指定泛型，就能使该方法的返回类型变为指定的类型</p>
+<h3 id="2、Redis淘汰策略"><a href="#2、Redis淘汰策略" class="headerlink" title="2、Redis淘汰策略"></a>2、Redis淘汰策略</h3><p><strong>Redis的淘汰机制</strong></p>
+<p>Redis内存淘汰机制其实简单讲就是将过期的数据或者很久没有访问，或者在一段时间内很少有访问的数据进行删除。它分为很多种，有主动的数据淘汰，如：用户设定过期时间。有被动的淘汰，比如：Redis数据占满了内存，这个时候就会将过期的数据或者很久没有访问的数据删除掉。</p>
+<p><strong>Redis的淘汰类型</strong></p>
+<p><em>定时过期</em>：每个设置过期时间的key都需要创建一个定时器，到过期时间就会立即清除。该策略可以立即清除过期的数据，对内存很友好；但是会占用大量的CPU资源去处理过期的数据，从而影响缓存的响应时间和吞吐量。</p>
+<p><em>惰性过期</em>：只有当访问一个key时，才会判断该key是否已过期，过期则清除。该策略可以最大化地节省CPU资源，却对内存非常不友好。极端情况可能出现大量的过期key没有再次被访问，从而不会被清除，占用大量内存。</p>
+<p><em>定期过期</em>：每隔一定的时间，会扫描一定数量的数据库的<code>expires</code>字典中一定数量的key，并清除其中已过期的key。该策略是前两者的一个折中方案。通过调整定时扫描的时间间隔和每次扫描的限定耗时，可以在不同情况下使得CPU和内存资源达到最优的平衡效果。</p>
 <blockquote>
-<p>补充：如果这里这个类是个泛型类，且泛型类的泛型标识符也用的<code>E</code>，在创建该对象调用方法时我们会发现，泛型方法的标识符即使和泛型类的标识符一样，在使用时却是独立的。<code>ArrayList</code>这里放的类型和泛型类创建指定时的类型可以不一样，也不会影响。</p>
+<p>expires字典会保存所有设置了过期时间的key的过期时间数据，其中，key是指向键空间中的某个键的指针，value是该键的毫秒精度的UNIX时间戳表示的过期时间。键空间是指该Redis集群中保存的所有键。</p>
 </blockquote>
-<h3 id="3-1-泛型方法对可变参数的支持"><a href="#3-1-泛型方法对可变参数的支持" class="headerlink" title="3.1 泛型方法对可变参数的支持"></a>3.1 泛型方法对可变参数的支持</h3><p>定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(E... e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(E el: e)&#123;</span><br><span class="line">    	System. out. println(e) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(E... e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e.length; i++) &#123;</span><br><span class="line">        <span class="comment">//这里可以当一个数组打印</span></span><br><span class="line">        System.out.println(e[i] + <span class="string">"\t"</span> + e[i].getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    print(<span class="number">1</span>,<span class="number">2</span>,<span class="string">"e"</span>,<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>	Integer</span><br><span class="line"><span class="number">2</span>	Integer</span><br><span class="line">e	String</span><br><span class="line"><span class="keyword">true</span>	Boolean</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-2总结"><a href="#3-2总结" class="headerlink" title="3.2总结"></a>3.2总结</h3><ul>
-<li>泛型方法能使方法<strong>独立于类</strong>发生变化</li>
-<li>如果静态方法要具有泛型能力，就必须使它变为泛型方法</li>
-</ul>
-<h1 id="四、类型通配符"><a href="#四、类型通配符" class="headerlink" title="四、类型通配符"></a>四、类型通配符</h1><h2 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h2><p>什么是类型通配符？</p>
-<p>答：类型通配符一般是使用<code>?</code>代表具体的<strong>类型实参</strong></p>
-<p>问题的提出：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Box</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> E first;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">getFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirst</span><span class="params">(E first)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.first = first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Box&lt;Integer&gt; box1 = <span class="keyword">new</span> Box&lt;&gt;();</span><br><span class="line">        box1.setFirst(<span class="number">111</span>);</span><br><span class="line">        showBox(box1);<span class="comment">//编译不通过</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showBox</span><span class="params">(Box&lt;Number&gt; box)</span> </span>&#123;</span><br><span class="line">        Object first = box.getFirst();</span><br><span class="line">        System.out.println(first);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里就有一个问题<code>Integer</code>明明是<code>Number</code>的一个子类，可是这里不能用多态的方式进行调用。这里对于这个<code>showBox</code>方法在只改变泛型的状况下不能进行，因为从本质上来说参数都是类类型<code>Box</code>是一样的。</p>
-<p>解决方案，使用类型通配符<code>?</code>，可以代表任意类型，并使用<code>object</code>进行接收值：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showBox</span><span class="params">(Box&lt;?&gt; box)</span> </span>&#123;</span><br><span class="line">    Object first = box.getFirst();</span><br><span class="line">    System.out.println(first);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-2-类型通配符的上限"><a href="#4-2-类型通配符的上限" class="headerlink" title="4.2 类型通配符的上限"></a>4.2 类型通配符的上限</h2><p>语法:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类/接口&lt;? extends 实参类型&gt;</span><br></pre></td></tr></table></figure>
-
-<p>要求该泛型的类型，要么是实参类型，要么是实参类型的<strong>子类</strong>类型</p>
-<p>改进前面的实例，上面的问题是不需要用<code>Object</code>来接受</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showBox</span><span class="params">(Box&lt;? extends Number&gt; box)</span> </span>&#123;</span><br><span class="line">    Number first = box.getFirst();</span><br><span class="line">    System.out.println(first);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就能直接在使用时泛型传入<code>Number</code>或其子类</p>
-<p><code>ArrayList</code>的<code>addAll</code>方法也就使用了类型通配符的上限</p>
-<p>注意：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addAnimal</span><span class="params">(ArrayList&lt;? extends Cat&gt; list)</span> </span>&#123;</span><br><span class="line">    list.add(<span class="keyword">new</span> Animal());</span><br><span class="line">    list.add(<span class="keyword">new</span> Cat());</span><br><span class="line">    list.add(<span class="keyword">new</span> MiniCat());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上三条添加全部报错，因为我们这里用的类型通配符上限，还不知道<code>ArrayList</code>会存何种数据类型，因此不能添加数据。</p>
-<h2 id="4-3-类型通配符的下限"><a href="#4-3-类型通配符的下限" class="headerlink" title="4.3 类型通配符的下限"></a>4.3 类型通配符的下限</h2><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类&#x2F;接口&lt;? super 实参类型&gt;</span><br></pre></td></tr></table></figure>
-
-<p>要求该泛型的类型，要么是实参类型，要么是实参类型的<strong>父类</strong>类型</p>
-<p>用法和上限类似</p>
-<p>注意：</p>
+<p><strong>定时过期的问题，缓存雪崩</strong></p>
+<p>引起缓存雪崩的原因：指缓存中数据大批量的到过期时间，而定时过期会占用大量的CPU资源。但如果我们主动的设置过期时间的键很多，并且是在同一时间过期，很可能会让Redis挂掉。不仅如此，我们很多的业务都是设计在Redis过期之后，再去查数据库，但Redis如果主动批量过期的时候，会有大量的请求发送到数据库，很有可能让数据库也挂掉。</p>
+<p><strong>解决方案</strong></p>
 <ul>
-<li>在泛型集合里面下限是可以添加任意元素的，但不保证类型的正确性。如上面的注意点，使用下限通配符三者都能添加。</li>
-<li>在遍历该集合时是使用<code>Object</code>接受元素进行遍历的</li>
+<li>缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</li>
+<li>如果缓存数据库是分布式部署，将热点数据均匀分布在不同高得缓存数据库中。</li>
+<li>设置热点数据永远不过期</li>
 </ul>
-<p><code>JDK</code>使用类型通配父下限的实例：在<code>TreeSet</code>的构造方法中，传入比较器的类型使用到了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;&gt;(comparator));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>怎么设置定期过期最大使用内存</strong></p>
+<p>定期过期的最大内存设置在我们的redis.conf文件中，我们可以在该文件中看到这个配置：<code>maxmemory &lt;bytes&gt;</code>，但是这个配置一般都是注释掉的，也就是说安装之后如果我们没有主动对他进行配置，那么他就不会有默认大小值。对应的它不设置的情况下，那么它可以使用多少的内存空间呢？这个跟系统有关。如果说我们将Redis安装在32位的系统上，它的最大使用内存空间应该是在3G左右，如果是64位的系统，那么可以将我们的内存占满。当然如果真正占满内存，这是一件比较恶劣的事情，不仅仅访问Redis的时候，我们不能在进行写的操作，而且我们系统本身的其他操作也会受到限制。所以我们可以采用命令来对它进行一个初始化的设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config <span class="built_in">set</span> maxmemory 268435456</span><br></pre></td></tr></table></figure>
 
-
-
-<h1 id="五、类型擦除"><a href="#五、类型擦除" class="headerlink" title="五、类型擦除"></a>五、类型擦除</h1><h2 id="5-1-概念"><a href="#5-1-概念" class="headerlink" title="5.1 概念"></a>5.1 概念</h2><p>泛型是Java 1. 5版本才引进的概念，在这之前是没有泛型的，但是，泛型代码能够很好地和之前版本的代码兼容。那是因为，泛型信息只存在于代码编译阶段，在进入<code>JVM</code>之前，与泛型相关的信息会被擦除掉，我们称之为–类型擦除。</p>
-<p>测试这么一段代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; intList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    ArrayList&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    System.out.println(intList.getClass().getSimpleName());</span><br><span class="line">    System.out.println(strList.getClass().getSimpleName());</span><br><span class="line">    System.out.println(intList.getClass() == strList.getClass());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList</span><br><span class="line">ArrayList</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-
-<p>编译之后类型都被擦除掉了，都为<code>ArrayList</code>类型</p>
-<h2 id="5-2-无限制类型擦除"><a href="#5-2-无限制类型擦除" class="headerlink" title="5.2 无限制类型擦除"></a>5.2 无限制类型擦除</h2><p><img src="/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311102708.png" alt="无限制类型擦除"></p>
-<p>实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Erasure</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> T key;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(T key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Erasure&lt;Integer&gt; erasure = <span class="keyword">new</span> Erasure&lt;&gt;();</span><br><span class="line">        <span class="comment">//利用反射，获取Erasure类的字节码类对象</span></span><br><span class="line">        Class&lt;? extends Erasure&gt; clz = erasure.getClass();</span><br><span class="line">        <span class="comment">//获取成员变量</span></span><br><span class="line">        Field[] declaredFields = clz.getDeclaredFields();</span><br><span class="line">        <span class="keyword">for</span> (Field declaredField : declaredFields) &#123;</span><br><span class="line">            <span class="comment">//打印成员变量的名称和类型</span></span><br><span class="line">            System.out.println(declaredField.getName() + <span class="string">": "</span> + declaredField.getType().getSimpleName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key: Object</span><br></pre></td></tr></table></figure>
-
-<p>可见，在编译后成员变量的类型变为了<code>Object</code>类型</p>
-<h2 id="5-3-有限制的类型擦除"><a href="#5-3-有限制的类型擦除" class="headerlink" title="5.3 有限制的类型擦除"></a>5.3 有限制的类型擦除</h2><p><img src="/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311114909.png" alt="有限制的类型擦除"></p>
-<p>将上述测试的<code>Erasure</code>类的泛型说明更改：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Erasure</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key: Number</span><br></pre></td></tr></table></figure>
-
-<p>可见，有限制的类型擦除是按上限类型做类型擦除</p>
-<h2 id="5-4-擦除方法中类型定义的参数"><a href="#5-4-擦除方法中类型定义的参数" class="headerlink" title="5.4 擦除方法中类型定义的参数"></a>5.4 擦除方法中类型定义的参数</h2><p><img src="/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311115609.png" alt="fangfa"></p>
-<p>在<code>Erasure</code>类中添加方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T extends List&gt; <span class="function">T <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//获取所有方法</span></span><br><span class="line">Method[] declaredMethods = clz.getDeclaredMethods();</span><br><span class="line"><span class="keyword">for</span> (Method declaredMethod : declaredMethods) &#123;</span><br><span class="line">    <span class="comment">//打印的是方法名和方法返回值类型</span></span><br><span class="line">        System.out.println(declaredMethod.getName() + <span class="string">": "</span> + 			  							declaredMethod.getReturnType().getSimpleName());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getKey: Number</span><br><span class="line">setKey: <span class="keyword">void</span></span><br><span class="line">show: List</span><br></pre></td></tr></table></figure>
-
-<p>我们发现，这里进行了方法的类型擦除</p>
-<h2 id="5-5-桥接方法"><a href="#5-5-桥接方法" class="headerlink" title="5.5 桥接方法"></a>5.5 桥接方法</h2><p><img src="/2020/03/11/java%E6%B3%9B%E5%9E%8B/QQ%E6%88%AA%E5%9B%BE20200311123754.png" alt="桥接方法"></p>
-<p>测试</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个泛型接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Info</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">T <span class="title">info</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfoImpl</span> <span class="keyword">implements</span> <span class="title">Info</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">info</span><span class="params">(Integer integer)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> integer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打印输出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;InfoImpl&gt; infoClass = InfoImpl<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Method[] infoImplMethod = infoClass.getDeclaredMethods();</span><br><span class="line"><span class="keyword">for</span> (Method method : infoImplMethod) &#123;</span><br><span class="line">    System.out.println(method.getName() + <span class="string">": "</span> +method.getReturnType().getSimpleName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info: Integer</span><br><span class="line">info: Object</span><br></pre></td></tr></table></figure>
-
-<p>多了一个<code>Object</code>类型，原因是接口中的泛型方法经过返回值擦除后为<code>Object</code>类型，实现类为了保证我们对接口的一个实现规范(约束)，必然有一个方法的返回值类型为<code>Object</code></p>
-<h1 id="六、泛型与数组"><a href="#六、泛型与数组" class="headerlink" title="六、泛型与数组"></a>六、泛型与数组</h1><h2 id="6-1-泛型数组的创建"><a href="#6-1-泛型数组的创建" class="headerlink" title="6.1 泛型数组的创建"></a>6.1 泛型数组的创建</h2><ul>
-<li>可以声明带泛型的数组引用，但是不能直接创建带泛型的数组对象</li>
-</ul>
-<p>如，原生的创建方式为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList[] list = <span class="keyword">new</span> ArrayList[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
-<p>如果想要创建一个泛型数组，这段声明就会在编译时报错</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt;[] listArr = <span class="keyword">new</span> ArrayList&lt;String&gt;[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
-<p>上面的可以综合使用，不过类型不安全</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt;[] listArr = list;</span><br></pre></td></tr></table></figure>
-
-<p>综合后编译时不会报错，但是<code>list</code>中可以添加其它元素，会发生<code>ClassCastException</code>这个异常</p>
-<p>改进：</p>
-<p>如果想安全地使用，我们不要将<code>list</code>这个原生数组暴露出来</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt;[] listArr = <span class="keyword">new</span> ArrayList[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
+<p>使用命令进行设置之后我们需要重启Redis才能生效。当然我们也可以直接找到Redis的安装目录，然后使用vi命令，直接更改配置文件中的对应的该内容，更改完之后，重启即可。</p>
+<p><strong>定时过期的淘汰策略</strong></p>
 <ul>
-<li>可以通过<code>java.lang.reflect.Array</code>的<code>newInstance(Class&lt;T&gt;,int)</code>创建<code>T[]</code>数组</li>
+<li><strong>volatile-lru</strong>:根据LRU算法生成的过期时间来删除。</li>
+<li><strong>allkeys-lru</strong>:根据LRU算法删除任何key。</li>
+<li><strong>volatile-lfu</strong>:从所有配置了过期时间的键中驱逐使用频率最少的键</li>
+<li><strong>allkeys-lfu</strong>:从所有键中驱逐使用频率最少的键</li>
+<li><strong>volatile-random</strong>:根据过期设置来随机删除key。</li>
+<li><strong>allkeys-random</strong>:无差别随机删。</li>
+<li><strong>volatile-ttl</strong>:根据最近过期时间来删除（辅以TTL）</li>
+<li><strong>noeviction:</strong>谁也不删，直接在写操作时返回错误。</li>
 </ul>
-<p>实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Array;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> T[] array;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Fruit</span><span class="params">(Class&lt;T&gt; clz, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        array = (T[]) Array.newInstance(clz,length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//填充数组</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> index, T item)</span> </span>&#123;</span><br><span class="line">        array[index] = item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回整个数组</span></span><br><span class="line">    <span class="keyword">public</span> T[] getArray() &#123;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>随机淘汰策略</strong></p>
+<p>随机找hash桶再次hash指定位置的dictEntry即可。就是在场景REDIS_MAXMEMORY_VOLATILE_RANDOM和REDIS_MAXMEMORY_ALLKEYS_LRU情况下的待淘汰的key。我们可以一观它的源码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">dictEntry *<span class="title">dictGetRandomKey</span><span class="params">(dict *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dictEntry *he, *orighe;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">int</span> listlen, listele;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (dictSize(d) == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(d)) _dictRehashStep(d);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(d)) &#123;</span><br><span class="line">        <span class="comment">// T = O(N)</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            h = <span class="built_in">random</span>() % (d-&gt;ht[<span class="number">0</span>].<span class="built_in">size</span>+d-&gt;ht[<span class="number">1</span>].<span class="built_in">size</span>);</span><br><span class="line">            he = (h &gt;= d-&gt;ht[<span class="number">0</span>].<span class="built_in">size</span>) ? d-&gt;ht[<span class="number">1</span>].table[h - d-&gt;ht[<span class="number">0</span>].<span class="built_in">size</span>] :</span><br><span class="line">                                      d-&gt;ht[<span class="number">0</span>].table[h];</span><br><span class="line">        &#125; <span class="keyword">while</span>(he == <span class="literal">NULL</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// T = O(N)</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            h = <span class="built_in">random</span>() &amp; d-&gt;ht[<span class="number">0</span>].sizemask;</span><br><span class="line">            he = d-&gt;ht[<span class="number">0</span>].table[h];</span><br><span class="line">        &#125; <span class="keyword">while</span>(he == <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* Now we found a non empty bucket, but it is a linked</span></span><br><span class="line"><span class="comment">     * list and we need to get a random element from the list.</span></span><br><span class="line"><span class="comment">     * The only sane way to do so is counting the elements and</span></span><br><span class="line"><span class="comment">     * select a random index. */</span></span><br><span class="line">    listlen = <span class="number">0</span>;</span><br><span class="line">    orighe = he;</span><br><span class="line">    <span class="keyword">while</span>(he) &#123;</span><br><span class="line">        he = he-&gt;next;</span><br><span class="line">        listlen++;</span><br><span class="line">    &#125;</span><br><span class="line">    listele = <span class="built_in">random</span>() % listlen;</span><br><span class="line">    he = orighe;</span><br><span class="line">    <span class="comment">// T = O(1)</span></span><br><span class="line">    <span class="keyword">while</span>(listele--) he = he-&gt;next;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> he;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>不建议使用泛型数组，可以使用泛型集合代替泛型数组</p>
-<h1 id="七、泛型和反射"><a href="#七、泛型和反射" class="headerlink" title="七、泛型和反射"></a>七、泛型和反射</h1><p>反射常用的泛型类：</p>
+<p><strong>TTL时间淘汰</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; server.maxmemory_samples; k++) &#123;</span><br><span class="line">    sds thiskey;</span><br><span class="line">    <span class="keyword">long</span> thisval;</span><br><span class="line"></span><br><span class="line">    de = dictGetRandomKey(dict);</span><br><span class="line">    thiskey = dictGetKey(de);</span><br><span class="line">    thisval = (<span class="keyword">long</span>) dictGetVal(de);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Expire sooner (minor expire unix timestamp) is better</span></span><br><span class="line"><span class="comment">     * candidate for deletion */</span></span><br><span class="line">    <span class="keyword">if</span> (bestkey == <span class="literal">NULL</span> || thisval &lt; bestval) &#123;</span><br><span class="line">        bestkey = thiskey;</span><br><span class="line">        bestval = thisval;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、Redis延时队列"><a href="#3、Redis延时队列" class="headerlink" title="3、Redis延时队列"></a>3、Redis延时队列</h3><p>这是一个开放性题目，没有标准答案，只要能自圆其说，都可以。以下方案仅供参考。</p>
+<p>数据结构使用<code>Zset</code>，其中<code>member</code>是任务描述，<code>score</code>是执行时间。</p>
+<p>然后用一个定时器定时去扫这个<code>Zset</code>，如果有<code>score</code>小于当前时间戳的，说明到了执行时间了，于是就执行这个任务。然后，还要处理好并发的问题。</p>
+<blockquote>
+<p>在Zset中，member表示元素值，score表示排序编号</p>
+</blockquote>
+<h3 id="4、Innodb的表如果没有设置主键的话，内部会怎么处理？"><a href="#4、Innodb的表如果没有设置主键的话，内部会怎么处理？" class="headerlink" title="4、Innodb的表如果没有设置主键的话，内部会怎么处理？"></a>4、Innodb的表如果没有设置主键的话，内部会怎么处理？</h3><p>如果innodb的表没有设置主键的话，innodb会优先使用用户自定义主键作为主键，如果用户没有定义主键，则选取一个<code>unique</code>键作为主键，如果表中连<code>unique</code>键都没有定义的话，则<code>InnoDB</code>会为表默认添加一个名为<code>row_id</code>的隐藏列作为主键。</p>
+<p><strong>延伸问题</strong> </p>
+<p>为什么Inodb一定要有主键，并且推荐使用自增主键</p>
 <ul>
-<li>Class<T></T></li>
-<li>Constructor<T></T></li>
+<li>主键递增，数据行写入可以提高插入性能，可以避免page分裂，减少表碎片提升空间和内存的使用</li>
+<li>主键要选择较短的数据类型， Innodb引擎普通索引都会<strong>保存主键的值</strong>，较短的数据类型可以有效的减少索引的磁盘空间，提高索引的缓存效率</li>
 </ul>
-<p>实例：对使用和不使用泛型反射的对比</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//使用反射的泛型类</span></span><br><span class="line">    Class&lt;Person&gt; personClass = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">    Constructor&lt;Person&gt; constructor = personClass.getConstructor();</span><br><span class="line">    Person person = constructor.newInstance();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//不使用</span></span><br><span class="line">    Class personClass = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">    Constructor constructor = personClass.getConstructor();</span><br><span class="line">    Object o = constructor.newInstance();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>InnoDB的聚簇索引</strong></p>
+<p>Innodb的主键索引，非叶子节点存储的是索引指针，叶子节点存储的是既有索引也有数据，是典型的聚簇索引（这里可以发现，<strong>索引和数据的存储顺序是强相关的</strong>。因此是典型的聚簇索引）</p>
+<p><strong>总结</strong></p>
+<p>Innodb中的每张表都会有一个聚集索引，而聚集索引又是以物理磁盘顺序来存储的，自增主键会把数据自动向后插入，避免了插入过程中的聚集索引排序问题。聚集索引的排序，必然会带来大范围的数据的物理移动，这里面带来的磁盘IO性能损耗是非常大的。<br>而如果聚集索引上的值可以改动的话，那么也会触发物理磁盘上的移动，于是就可能出现page分裂，表碎片横生。</p>
+<h3 id="5、Mysql索引的分类"><a href="#5、Mysql索引的分类" class="headerlink" title="5、Mysql索引的分类"></a>5、Mysql索引的分类</h3><blockquote>
+<p>本篇如果没有特殊声明，默认使用InnoDB存储引擎</p>
+</blockquote>
+<p><strong>根据底层数据结构划分</strong></p>
+<blockquote>
+<p>索引是提高查询效率的数据结构，而能够提高查询效率的数据结构有很多，如二叉搜索树，红黑树，跳表，哈希表（散列表）等，而MySQL中用到了B+Tree和散列表（Hash表）作为索引的底层数据结构(其实也用到了跳表实现全文索引，但这不是重要考点，所以可以忽略)。</p>
+</blockquote>
+<ol>
+<li><p>hash索引</p>
+<p>MySQL并没有显式支持Hash索引，而是作为内部的一种优化。具体在Innodb存储引擎里，会监控对表上二级索引的查找，如果发现某二级索引被频繁访问，二级索引成为热数据，就为之建立hash索引。因此，在MySQL的Innodb里，对于热点的数据会自动生成Hash索引。这种hash索引，根据其使用的场景特点，也叫<strong>自适应Hash索引</strong>。</p>
+</li>
+<li><p>B+树索引</p>
+<p>这个是MySQL索引的基本实现方式。除了全文索引、hash索引，Innodb、MyISAM的索引都是通过B+树实现的。</p>
+</li>
+</ol>
+<p><strong>根据索引字段个数划分</strong></p>
+<p>为了能应对不同的数据检索需求，索引既可以仅包含一个字段，也可以同时包含多个字段。单个字段组成的索引可以称为<strong>单值索引</strong>，否则称之为复合索引，也称为组合索引或<strong>多值索引</strong>。</p>
+<p>如我们有一张表，有三个属性，分别是 id，age 和 name 。假如在id上建立索引，那这就是单值索引；如果在 name 和 age 上建立索引，那这就是复合索引。</p>
+<p>复合索引的索引的数据顺序跟字段的顺序相关，包含多个值的索引中，如果当前面字段的值重复时，将会按照其后面的值进行排序。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/XS2esJew19YSMVKWPykcZicj2oSETxjwoMtyWfQzSuhG1euFFEiaiaf2nqJqWIcQruwib4Nkckgrc3DLYUiaJdeYKpw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>使用覆盖索引的前提是字段长度比较短，对于值长度较长的字段则不适合使用覆盖索引，原因有很多，比如索引一般存储在内存中，如果占用空间较大，则可能会从磁盘中加载，影响性能。</p>
+<blockquote>
+<p>覆盖索引（covering index）指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖。<br>如果一个索引包含了（或覆盖了）满足查询语句中字段与条件的数据就叫做覆盖索引。</p>
+</blockquote>
+<p><strong>根据是否在主键上建立的索引进行划分</strong></p>
+<ol>
+<li><p>主键索引</p>
+<p>MySQL中是根据主键来组织数据的，所以每张表都必须有主键索引，主键索引只能有一个，不能为null同时必须保证唯一性。建表时如果没有指定主键索引，则会自动生成一个隐藏的字段作为主键索引。</p>
+</li>
+<li><p>辅助索引</p>
+<p>如果不是主键索引，则就可以称之为非主键索引，又可以称之为辅助索引或者二级索引。主键索引的叶子节点存储了完整的数据行，而非主键索引的叶子节点存储的则是主键索引值，通过非主键索引查询数据时，会先查找到主键索引，然后再到主键索引上去查找对应的数据。</p>
+<p>在这里假设我们有张表user，具有三列：ID，age，name，create_time，id是主键，（age，create_time,，name）建立辅助索引。执行如下sql语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> age&gt;<span class="number">2</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time <span class="keyword">desc</span>。</span><br></pre></td></tr></table></figure>
 
+<p>正常的话，查询分两步：</p>
+<p>1.按照辅助索引，查找到记录的主键，</p>
+<p>2.按照主键主键索引里查找记录，返回name。</p>
+<p>但实际上，我们可以看到，辅助索引节点是按照age，create_time，name建立的，索引信息里完全包含我们所要的信息，如果能从辅助索引里返回name信息，则第二步是完全没有必要的，可以极大提升查询速度。按照这种思想Innodb里针对使用辅助索引的查询场景做了优化，叫<strong>覆盖索引</strong></p>
+</li>
+</ol>
+<p><strong>根据数据与索引的存储关联性划分</strong></p>
+<p>根据数据与索引的存储关联性，可以分为<strong>聚簇索引</strong>和<strong>非聚簇索引</strong>（也叫聚集索引和非聚集索引）。聚簇索引也叫簇类索引，是一种对磁盘上实际数据重新组织以按指定的一个或多个列的值排序。整个简洁的说法，这俩的<strong>区别就是索引的存储顺序和数据的存储顺序是否是关系的，有关就是聚簇索引，无关就是非聚簇索引</strong>。具体实现方式根据索引的数据结构不同会有所不同。下面以B+树实现的索引为例，举例来说明聚簇索引和非聚簇索引。</p>
+<ol>
+<li><p>聚簇索引</p>
+<p>Innodb的主键索引，==非叶子节点存储的是索引指针，叶子节点存储的是既有索引也有数据==，是典型的聚簇索引（这里可以发现，索引和数据的存储顺序是强相关的。因此是典型的聚簇索引），如图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/XS2esJew19YSMVKWPykcZicj2oSETxjwokPaI5z1f5pkrEsMpC9AQm6ku72Xs20ib4tQK245lUsQG0PzibibAhuduw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+</li>
+<li><p>非聚簇索引</p>
+<p>MyISAM中索引和数据文件分开存储，B+Tree的叶子节点存储的是数据存放的地址，而不是具体的数据，是典型的非聚簇索引；换言之，<em>数据可以在磁盘上随便找地方存，索引也可以在磁盘上随便找地方存，只要叶子节点记录对了数据存放地址就行。</em>因此，索引存储顺序和数据存储关系毫无关联，是典型的非聚簇索引，另外Inndob里的辅助索引也是非聚簇索引。</p>
+</li>
+</ol>
+<p><strong>其他分类</strong></p>
+<ol>
+<li><p>唯一索引</p>
+<p>顾名思义，不允许具有索引值相同的行，从而禁止重复的索引或键值。系统在创建该索引时检查是否有重复的键值，并在每次使用 INSERT 或 UPDATE 语句添加数据时进行检查， 如果有重复的值，则会操作失败，抛出异常。</p>
+</li>
+<li><p>全文索引</p>
+<p>在MySQL 5.6版本以前,只有MyISAM存储引擎支持全文引擎。在5.6版本中,InnoDB加入了对全文索引的支持,但是不支持中文全文索引.在5.7.6版本,MySQL内置了ngram全文解析器,用来支持亚洲语种的分词。主要用来利用关键词查询文本，不是MySQL的主要面向场景，使用较少，这里就不展开讨论了。</p>
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/XS2esJew19YSMVKWPykcZicj2oSETxjwoZ5REmWNMFzVx5e3WrPicCDKfYxXL48gu2nI6kYcWP6TeJ4Og6LLPvnw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h3 id="6、MyIsam里有聚簇索引吗？"><a href="#6、MyIsam里有聚簇索引吗？" class="headerlink" title="6、MyIsam里有聚簇索引吗？"></a>6、MyIsam里有聚簇索引吗？</h3><p>没有。myIsam里的索引都是二级索引，因为myIsam里索引跟数据是分开存放的</p>
+<h3 id="7、synchronized底层是怎么实现的？"><a href="#7、synchronized底层是怎么实现的？" class="headerlink" title="7、synchronized底层是怎么实现的？"></a>7、synchronized底层是怎么实现的？</h3><p>在java中每个对象都隐式包含一个monitor(监视器)对象，加锁的过程其实就是竞争monitor的过程，当线程加入字节码monitorenter指令之后，线程将持有monitor对象，执行monitorexit时释放monitor对象，当其他线程没有拿到monitor对象时，则需阻塞等待获取该对象。</p>
+<p>延伸问题：synchronized锁升级过程？Java对象的内存布局？</p>
+<h3 id="8、伪共享"><a href="#8、伪共享" class="headerlink" title="8、伪共享"></a>8、伪共享</h3><p>CPU缓存从内存读取数据时，是按缓存行读取的，即使只用到了一个变量，也要将整行数据进行读取，这行数据量可能包含其他变量。当多个线程同时修改同一个缓存行里的不同变量时，由于同时只能有一个线程在操作，所以相比每个变量放到不同缓存行里，性能会有所下降。（补充：缓存一致性协议）</p>
+<p>伪共享出现的原因：因为CPU缓存和内存交换数据的单位是缓存行，而同一个缓存行里的多个变量不能同时被多个线程修改</p>
+<p>伪共享示例代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多个线程，每个线程操作一个VolatileLong数组中的元素</span></span><br><span class="line"><span class="comment">// VolatileLong是否进行填充会影响最终结果</span></span><br><span class="line"><span class="comment">// 为填充时会产生伪共享问题，运行更慢，填充后不会</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FalseShareTest</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> NUM_THREADS = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> ITERATIONS = <span class="number">50L</span> * <span class="number">1000L</span> * <span class="number">1000L</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> arrayIndex;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> VolatileLong[] longs;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> SUM_TIME = <span class="number">0l</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FalseShareTest</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> arrayIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.arrayIndex = arrayIndex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">final</span> String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        <span class="comment">// 多个线程操作多个VolatileLong</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">10</span>; j++)&#123;</span><br><span class="line">        <span class="comment">// 初始化</span></span><br><span class="line">            System.out.println(j);</span><br><span class="line">            <span class="keyword">if</span> (args.length == <span class="number">1</span>) &#123;</span><br><span class="line">                NUM_THREADS = Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            longs = <span class="keyword">new</span> VolatileLong[NUM_THREADS];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; longs.length; i++) &#123;</span><br><span class="line">                longs[i] = <span class="keyword">new</span> VolatileLong();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">long</span> start = System.nanoTime();</span><br><span class="line">            <span class="comment">// 构造并启动线程</span></span><br><span class="line">            runTest();</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">long</span> end = System.nanoTime();</span><br><span class="line">            SUM_TIME += end - start;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"平均耗时："</span>+SUM_TIME/<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">// 创建每个线程， 每个线程操作一个VolatileLong</span></span><br><span class="line">        Thread[] threads = <span class="keyword">new</span> Thread[NUM_THREADS];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threads.length; i++) &#123;</span><br><span class="line">            threads[i] = <span class="keyword">new</span> Thread(<span class="keyword">new</span> FalseShareTest(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Thread t : threads) &#123;</span><br><span class="line">            t.start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Thread t : threads) &#123;</span><br><span class="line">            t.join();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> i = ITERATIONS + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">0</span> != --i) &#123;</span><br><span class="line">            longs[arrayIndex].value = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">VolatileLong</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">volatile</span> <span class="keyword">long</span> value = <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">long</span> p1, p2, p3, p4, p5, p6;     <span class="comment">// 注释此行，结果区别很大</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>VolatileLong是否使用6个long变量填充，结果相差很多。<br>使用填充，会避免伪共享，速度更快。</p>
+<p>如果避免伪共享：字节填充（创建变量时，使用字段对其进行填充，避免多个变量被分配到同一个缓存行里）。JDK8以上可以使用<code>@Contended</code>注解避免伪共享</p>
+<p><a href="https://www.jianshu.com/p/defb9f9af5d3" target="_blank" rel="noopener">参考博客</a></p>
+<h3 id="9、什么是IO的多路复用技术"><a href="#9、什么是IO的多路复用技术" class="headerlink" title="9、什么是IO的多路复用技术"></a>9、什么是IO的多路复用技术</h3><p>先弄清楚一个概念，这里的I/O通常指网络I/O，多路指多个Socket连接，复用指操作系统进行运算调度的最小单位<strong>线程</strong>。整体意思也就是多个网络I/O复用一个或少量的线程来处理Socket。</p>
+<blockquote>
+<p>I/O多路复用的四种实现</p>
+</blockquote>
+<ul>
+<li><p>select</p>
+<p>通过轮询检查在文件描述符上设置的标识位来进行判断，select 的轮询相当于在数据库中查找一条记录没有建立索引，对所有的 socket 进行全部遍历，这对 CPU 是浪费的。另外 select 还有一个限制，对于单个进程所能打开的文件描述符最大只能是 1024，那么基于 select 的轮询技术最多也只能很好的处理 1000 并发的吞吐量，可以查看 上一个10年，著名的C10K并发连接问题</p>
+</li>
+<li><p>poll</p>
+<p>poll 和 select 在实现上没有本质的区别，相比较 select，poll 基于链表来实现，没有了最大链接 1024 的限制。但是当文件描述符多了之后，每次调用都会对链接进行线性遍历，性能还是十分低下的。</p>
+</li>
+<li><p>epoll</p>
+<p>是 linux 下效率最高的 I/O 事件通知机制，没有最大链接限制，通过 callbak 回调通知机制，不在是每次调用都对链接进行线性遍历，这样就不会随着文件描述符的增加导致效率下降。</p>
+</li>
+<li><p>kqueue</p>
+<p>与 epoll 类似，仅存于 FreeBSD（一种类UNIX操作系统）。</p>
+</li>
+</ul>
+<blockquote>
+<p>如果问到轮询技术的实现一般也会考察 select 和 epoll 的区别?</p>
+</blockquote>
+<p>操作系统上的区别：</p>
+<ul>
+<li>select 采用了线性遍历来查找，链接多了之后可以想象一下在一个诺大的数组中每次通过遍历来锁定一个链接，是多么的消耗性能。</li>
+<li>epoll 则不需要遍历，采用的是回调机制，可以看作一个 HashTable，来锁定一个对象是很快的。</li>
+</ul>
+<p>文件描述符限制</p>
+<ul>
+<li>对于文件描述符（最大连接数）select 限制为 1024。</li>
+<li>epoll 则没有这个限制，通常在 1G 内存的机器上所能支持的连接数为 10W 左右。</li>
+</ul>
+<p>对于操作系统的支持</p>
+<ul>
+<li>从操作系统支持上来看，目前流行的高性能 Web 服务器 Nginx 是基于 epoll 来实现高并发，当然如果你的链接很小的情况下区别还是不大的 select 也能满足，如果是大流量、高并发情况 epoll 目前还是首选模型。</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/t8pH3xqPS5CiuyaUx-8wcA" target="_blank" rel="noopener">参考</a></p>
+<h3 id="10、进程和线程的区别"><a href="#10、进程和线程的区别" class="headerlink" title="10、进程和线程的区别"></a>10、进程和线程的区别</h3><p><strong>进程</strong></p>
+<p>一个在内存中运行的应用程序。每个进程都有自己独立的一块内存空间，一个进程可以有多个线程。</p>
+<p><strong>线程</strong></p>
+<p>进程中的一个执行任务（控制单元），负责当前进程中程序的执行。一个进程至少有一个线程，一个进程可以运行多个线程，多个线程可共享数据。</p>
+<p>与进程不同的是同类的多个线程共享进程的<strong>堆</strong>和<strong>方法区</strong>资源，但每个线程有自己的<strong>程序计数器</strong>、<strong>虚拟机栈</strong>和<strong>本地方法栈</strong>，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。</p>
+<p><strong>区别总结</strong></p>
+<p>线程具有许多传统进程所具有的特征，故又称为轻型进程(Light—Weight Process)或进程元；而把传统的进程称为重型进程(Heavy—Weight Process)，它相当于只有一个线程的任务。在引入了线程的操作系统中，通常一个进程都有若干个线程，至少包含一个线程。</p>
+<p>根本区别：进程是操作系统资源分配的基本单位，而线程是处理器任务调度和执行的基本单位</p>
+<p>资源开销：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自己独立的运行栈和程序计数器（PC），线程之间切换的开销小。</p>
+<p>包含关系：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。</p>
+<p>内存分配：同一进程的线程共享本进程的地址空间和资源，而进程之间的地址空间和资源是相互独立的</p>
+<p>影响关系：一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程都死掉。所以多进程要比多线程健壮。</p>
+<p>执行过程：每个独立的进程有程序运行的入口、顺序执行序列和程序出口。但是线程不能独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，两者均可并发执行</p>
+<p><strong>从JVM角度说进程和线程之间的关系</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20191105205545651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly90aGlua3dvbi5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70" alt="进程和线程">从上图可以看出：一个进程中可以有多个线程，多个线程共享进程的<strong>堆</strong>和<strong>方法区 (JDK1.8 之后的元空间)</strong>资源，但是每个线程有自己的<strong>程序计数器</strong>、<strong>虚拟机栈</strong> 和 <strong>本地方法栈</strong>。</p>
 
       
 
@@ -425,7 +417,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">平时笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试准备</a>
         		</li>
       		
 		</ul>
@@ -481,7 +473,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/11/java%E6%B3%9B%E5%9E%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/14/Interview1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -495,18 +487,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/13/java%E6%B3%A8%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          java注解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/05/java%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java枚举</div>
+    <a href="/2020/05/06/SpringBoot%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot入门笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
